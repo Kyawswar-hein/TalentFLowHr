@@ -1,0 +1,46 @@
+James Wilson — Principal Embedded Systems & Firmware Architect
+Location: San Jose, CA | Email: j.wilson.embedded@example.com
+
+Professional Summary
+Principal Embedded Systems Engineer with 12+ years of experience designing low-level firmware, real-time operating system (RTOS) architectures, and automotive/industrial IoT hardware integrations. Expert in hardware-software co-design, board bring-up, and safety-critical system development.
+
+Technical Skills
+Languages: Embedded C, C++, Assembly (ARM, x86), Python (Hardware Test Automation)
+
+Architectures & Microcontrollers: ARM Cortex-M/R/A, STM32, ESP32, TI MSP430, RISC-V
+
+Protocols & Interfaces: CAN Bus, Ethernet (AVB/TSN), SPI, I2C, UART, PCIe, USB, BLE
+
+RTOS & Environments: FreeRTOS, Embedded Linux, Zephyr, Keil, IAR Embedded Workbench, Oscilloscopes, Logic Analyzers
+
+Professional Experience
+Principal Firmware Architect | AutoTech Innovations (2021 – Present)
+
+Architected safety-critical firmware compliant with ISO 26262 (ASIL-D standards) for next-generation electric vehicle Powertrain Control Units (PCUs).
+
+Led low-level board bring-up efforts for custom multicore ARM Cortex-R5 hardware platforms.
+
+Developed custom CAN-FD driver stacks and optimized real-time task scheduling in FreeRTOS, ensuring sub-100 microsecond deterministic response times.
+
+Senior Embedded Engineer | Robotics Lab Corp (2016 – 2021)
+
+Designed motion-control firmware in C++ for 6-axis industrial robot arms utilized in automated manufacturing lines.
+
+Implemented low-power sleeping modes and DMA data transfers on ESP32 microcontrollers, extending device battery life by 350%.
+
+Created automated Hardware-in-the-Loop (HIL) testing suites in Python, catching 90% of firmware edge-case bugs prior to silicon release.
+
+Embedded Firmware Developer | SmartSens Devices (2013 – 2016)
+
+Wrote low-level drivers for I2C and SPI sensor modules (accelerometers, gyroscopes, temperature sensors).
+
+Performed deep-level debugging using JTAG/SWD, logic analyzers, and digital oscilloscopes.
+
+Hardware Test Engineer | Silicon Systems Inc. (2012 – 2013)
+
+Developed automated thermal and signal integrity testing scripts for PCB prototypes.
+
+Education
+M.S. in Electrical & Computer Engineering | Stanford University (2010 – 2012)
+
+B.S. in Electrical Engineering | UC Berkeley (2006 – 2010)

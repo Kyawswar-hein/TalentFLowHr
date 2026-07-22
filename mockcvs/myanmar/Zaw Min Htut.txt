@@ -1,0 +1,26 @@
+Zaw Min Htut — Junior Quality Assurance (QA) Engineer
+Seniority: Entry-Level (1.5 years experience)
+
+Target Roles: Junior QA Automation Engineer, Software Tester
+
+Education
+B.S. in Computer Science — Dagon University (Graduated 2024)
+
+Profile Summary
+Quality Assurance Engineer with 1.5 years of experience in manual testing and introductory test automation. Proficient in test case design, bug tracking, API testing with Postman, and writing basic automated E2E test scripts in Cypress.
+
+Core Skills
+Testing: Manual Testing, Regression Testing, Boundary Value Analysis, API Testing (Postman)
+
+Automation Basics: Cypress, JavaScript, Basic Selenium
+
+Management & Tools: Jira, TestRail, Git, Chrome DevTools
+
+Key Experience
+Junior QA Engineer | NextGen Solutions (2025 – Present)
+
+Executed functional, integration, and regression test suites for mobile and web platforms across weekly release cycles.
+
+Created and maintained 150+ detailed test cases in TestRail, reducing redundant testing efforts by 20%.
+
+Wrote automated end-to-end regression scripts using Cypress for core user login and checkout flows.

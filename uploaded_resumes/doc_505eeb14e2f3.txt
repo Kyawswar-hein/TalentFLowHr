@@ -1,0 +1,44 @@
+Amanda Martinez — VP of Product Management
+Location: Denver, CO | Email: amanda.martinez.pm@example.com
+
+Professional Summary
+VP of Product with 13+ years of experience leading product vision, GTM (Go-To-Market) strategy, and growth initiatives for B2B SaaS organizations. Experienced in growing product teams from scratch, scaling products from zero to $50M+ ARR, and managing global product lifecycles.
+
+Core Competencies
+Product Leadership: Product Strategy, Portfolio Management, Product Lifecycle Management, Product-Led Growth (PLG)
+
+Analytics & Growth: Cohort Retention Analysis, Customer Journey Mapping, Pricing Strategy, Funnel Optimization
+
+Process & Tools: Agile Product Delivery, Productboard, Amplitude, Mixpanel, Jira, UserVoice
+
+Professional Experience
+VP of Product Management | CloudScale SaaS (2022 – Present)
+
+Oversees a organization of 15 Product Managers, Product Owners, and User Researchers across 4 SaaS product verticals.
+
+Spearheaded a strategic shift toward Product-Led Growth (PLG), launching a freemium tier that increased self-serve signup volume by 210%.
+
+Formulates long-term product vision and aligns product roadmaps with executive growth objectives, driving annual revenue from $22M to $55M+.
+
+Director of Product | Vista Tech (2018 – 2022)
+
+Managed the flagship enterprise workflow management tool, growing active monthly users (MAU) from 100K to 1.2M.
+
+Restructured product discovery frameworks, introducing quantitative analytics via Amplitude and qualitative voice-of-customer programs.
+
+Re-priced and packaged core product tiers, generating an immediate 18% lift in Average Revenue Per User (ARPU).
+
+Senior Product Manager | Apex Media Group (2014 – 2018)
+
+Owned the roadmap for a mobile content delivery app with 5M+ downloads on iOS and Android.
+
+Partnered closely with engineering, UX, and marketing teams to release major feature updates quarterly.
+
+Product Manager / Business Analyst | Digital Wave Interactive (2011 – 2014)
+
+Gathered product requirements, authored comprehensive PRDs (Product Requirement Documents), and groomed user story backlogs.
+
+Education
+M.B.A. | UC Berkeley Haas School of Business (2016 – 2018)
+
+B.S. in Information Systems | University of Colorado Boulder (2007 – 2011)

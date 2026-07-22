@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Talent Intelligence - Interview Prep</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col text-gray-800">
+
+    <!-- TOP NAVBAR -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-30 h-16 flex items-center justify-between px-6 shadow-sm">
+        <div class="flex items-center space-x-4">
+            <button id="toggleSidebar" class="text-gray-500 hover:text-gray-700 p-1 rounded-md hover:bg-gray-100">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <div class="flex items-center space-x-2">
+                <span class="bg-blue-600 text-white p-1.5 rounded-lg text-sm font-bold">HR</span>
+                <span class="font-bold text-gray-800 text-base tracking-tight" id="txt-brand">TalentFlow AI</span>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-6">
+            <div class="inline-flex rounded-md shadow-sm border border-gray-200 p-0.5 bg-gray-50 text-xs font-semibold">
+                <button id="lang-en" class="px-2.5 py-1 rounded bg-blue-600 text-white shadow-sm transition">EN</button>
+                <button id="lang-jp" class="px-2.5 py-1 rounded text-gray-600 hover:text-gray-900 transition">日本語</button>
+            </div>
+            <div class="flex items-center space-x-2 pl-2 border-l border-gray-200">
+                <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center text-xs border border-blue-200">HR</div>
+                <span class="text-xs font-medium text-gray-700 hidden sm:inline-block">Recruiter Admin</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex flex-1 relative overflow-hidden">
+        <!-- SIDEBAR -->
+        <aside id="sidebar" class="w-64 bg-white border-r border-gray-200 flex-shrink-0 transition-all duration-300 flex flex-col justify-between">
+            <div class="p-4 space-y-6">
+                <nav class="space-y-1">
+                    <a href="dashboard" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">📊</span><span id="nav-dashboard">Dashboard</span>
+                    </a>
+                    <a href="resumes" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">📁</span><span id="nav-resumes">Resume Processing</span>
+                    </a>
+                    <a href="candidates" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">👥</span><span id="nav-candidates">Candidate Database</span>
+                    </a>
+                    <a href="interview" class="flex items-center space-x-3 px-3 py-2 rounded-lg bg-blue-50 text-blue-700 font-semibold text-xs transition">
+                        <span class="text-base">🎯</span><span id="nav-interview">Interview Prep</span>
+                    </a>
+                    <a href="rag" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">🧠</span><span id="nav-rag">Agentic RAG Search</span>
+                    </a>
+                    <a href="settings" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">⚙️</span><span id="nav-settings">Settings</span>
+                    </a>
+                </nav>
+            </div>
+            <div class="p-4 border-t border-gray-100 bg-gray-50/50">
+                <p class="text-[10px] text-gray-400 font-medium" id="txt-storage-info">Storage: 42.8 MB / 5 GB</p>
+                <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1.5">
+                    <div class="bg-blue-600 h-1.5 rounded-full" style="width: 15%"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN WORKSPACE -->
+        <main class="flex-1 overflow-y-auto p-6 space-y-6">
+            <div>
+                <h1 class="text-xl font-bold text-gray-900" id="txt-title">AI Interview Preparation Agent</h1>
+                <p class="text-xs text-gray-500 mt-0.5" id="txt-subtitle">Generate candidate fit score, skill gap analysis, and tailored technical interview questions.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- LEFT INPUT PANEL (5 cols) -->
+                <div class="lg:col-span-5 bg-white p-5 rounded-xl border border-gray-200 shadow-sm space-y-4">
+                    <h2 class="text-xs font-bold uppercase tracking-wider text-gray-500" id="txt-sec1-title">1. Target Job & Candidate</h2>
+
+                    <!-- SEARCHABLE CANDIDATE COMBOBOX -->
+                    <div class="relative">
+                        <label class="block text-xs font-semibold text-gray-700 mb-1" id="txt-lbl-candidate">Select / Search Candidate</label>
+                        <div class="relative">
+                            <input type="text" id="candidateSearchInput" placeholder="Type candidate name or role to filter..." 
+                                   class="w-full border border-gray-300 rounded-lg p-2 pr-8 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500" autocomplete="off" />
+                            <span class="absolute right-2.5 top-2.5 text-gray-400 text-xs">🔍</span>
+                        </div>
+                        
+                        <!-- Hidden Candidate ID Storage -->
+                        <input type="hidden" id="selectedCandidateId" value="" />
+
+                        <!-- Autocomplete Dropdown Menu -->
+                        <div id="candidateDropdown" class="hidden absolute z-20 w-full bg-white border border-gray-200 rounded-lg shadow-lg mt-1 max-h-48 overflow-y-auto divide-y divide-gray-100 text-xs">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1" id="txt-lbl-jobtitle">Target Job Title</label>
+                        <input type="text" id="jobTitleInput" placeholder="e.g. Senior Full-Stack Engineer" class="w-full border border-gray-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-blue-500" value="Senior Full-Stack Engineer" />
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1" id="txt-lbl-jd">Job Description (JD)</label>
+                        <textarea id="jdInput" rows="8" placeholder="Paste target Job Description requirements..." class="w-full border border-gray-300 rounded-lg p-2 text-xs focus:ring-2 focus:ring-blue-500 resize-none">We are seeking a Senior Full-Stack Engineer proficient in Java, Spring Boot, PostgreSQL, and React. Responsibilities include building scalable REST APIs, role-based security, and managing cloud deployments on AWS.</textarea>
+                    </div>
+
+                    <button id="generateBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-lg text-xs font-bold shadow transition flex items-center justify-center space-x-2">
+                        <span id="txt-btn-generate">🎯 Generate Interview Package</span>
+                    </button>
+                </div>
+
+                <!-- RIGHT RESULTS PANEL (7 cols) -->
+                <div class="lg:col-span-7 bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+                    <h2 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-4" id="txt-sec2-title">2. Interview Kit & Skill Evaluation</h2>
+
+                    <div id="resultsContainer" class="flex-1 space-y-4 overflow-y-auto max-h-[600px] text-xs">
+                        <div class="p-8 text-center text-gray-400 italic" id="txt-placeholder">Select a candidate, input job description, and click "Generate Interview Package".</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                brand: "TalentFlow AI",
+                navDashboard: "Dashboard",
+                navResumes: "Resume Processing",
+                navCandidates: "Candidate Database",
+                navInterview: "Interview Prep",
+                navRag: "Agentic RAG Search",
+                navSettings: "Settings",
+                storageInfo: "Storage: 42.8 MB / 5 GB",
+                title: "AI Interview Preparation Agent",
+                subtitle: "Generate candidate fit score, skill gap analysis, and tailored technical interview questions.",
+                sec1Title: "1. Target Job & Candidate",
+                lblCandidate: "Select / Search Candidate",
+                searchPlaceholder: "Type candidate name or role to filter...",
+                lblJobTitle: "Target Job Title",
+                lblJd: "Job Description (JD)",
+                btnGenerate: "🎯 Generate Interview Package",
+                sec2Title: "2. Interview Kit & Skill Evaluation",
+                placeholder: "Select a candidate, input job description, and click 'Generate Interview Package'.",
+                selectTag: "Select",
+                matchedSkillsTitle: "✅ Matched Skills",
+                skillGapsTitle: "⚠️ Skill Gaps / Focus Areas",
+                questionsTitle: "Tailored Technical Interview Questions",
+                expectedAnswerTitle: "💡 Expected Answer:"
+            },
+            jp: {
+                brand: "TalentFlow AI",
+                navDashboard: "ダッシュボード",
+                navResumes: "履歴書処理",
+                navCandidates: "候補者データベース",
+                navInterview: "面接対策",
+                navRag: "Agentic RAG検索",
+                navSettings: "設定",
+                storageInfo: "ストレージ: 42.8 MB / 5 GB",
+                title: "AI 面接対策エージェント",
+                subtitle: "候補者の適性スコア、スキルギャップ分析、個別化された技術質問キットの生成",
+                sec1Title: "1. 募集職種 & 候補者選択",
+                lblCandidate: "候補者の検索・選択",
+                searchPlaceholder: "候補者名や職種でリアルタイム検索...",
+                lblJobTitle: "募集職種名",
+                lblJd: "職務記述書 (JD)",
+                btnGenerate: "🎯 面接対策キットを生成",
+                sec2Title: "2. 面接キット & スキル評価結果",
+                placeholder: "候補者を選択し、JDを入力して「面接対策キットを生成」をクリックしてください。",
+                selectTag: "選択",
+                matchedSkillsTitle: "✅ 一致したスキル",
+                skillGapsTitle: "⚠️ スキルギャップ / 重点質問項目",
+                questionsTitle: "個別最適化された技術面接質問",
+                expectedAnswerTitle: "💡 期待される回答ポイント:"
+            }
+        };
+
+        let currentLang = localStorage.getItem('appLang') || 'en';
+        let candidateList = [];
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('appLang', lang);
+            const t = translations[lang];
+
+            document.getElementById('lang-en').className = lang === 'en' ? "px-2.5 py-1 rounded bg-blue-600 text-white shadow-sm transition" : "px-2.5 py-1 rounded text-gray-600 hover:text-gray-900 transition";
+            document.getElementById('lang-jp').className = lang === 'jp' ? "px-2.5 py-1 rounded bg-blue-600 text-white shadow-sm transition" : "px-2.5 py-1 rounded text-gray-600 hover:text-gray-900 transition";
+
+            document.getElementById('txt-brand').innerText = t.brand;
+            document.getElementById('nav-dashboard').innerText = t.navDashboard;
+            document.getElementById('nav-resumes').innerText = t.navResumes;
+            document.getElementById('nav-candidates').innerText = t.navCandidates;
+            document.getElementById('nav-interview').innerText = t.navInterview;
+            document.getElementById('nav-rag').innerText = t.navRag;
+            document.getElementById('nav-settings').innerText = t.navSettings;
+            document.getElementById('txt-storage-info').innerText = t.storageInfo;
+
+            document.getElementById('txt-title').innerText = t.title;
+            document.getElementById('txt-subtitle').innerText = t.subtitle;
+            document.getElementById('txt-sec1-title').innerText = t.sec1Title;
+            document.getElementById('txt-lbl-candidate').innerText = t.lblCandidate;
+            document.getElementById('candidateSearchInput').placeholder = t.searchPlaceholder;
+            document.getElementById('txt-lbl-jobtitle').innerText = t.lblJobTitle;
+            document.getElementById('txt-lbl-jd').innerText = t.lblJd;
+            document.getElementById('txt-btn-generate').innerText = t.btnGenerate;
+            document.getElementById('txt-sec2-title').innerText = t.sec2Title;
+
+            const placeholderEl = document.getElementById('txt-placeholder');
+            if (placeholderEl) placeholderEl.innerText = t.placeholder;
+        }
+
+        // Fetch candidates and setup typeahead search
+        async function loadCandidates() {
+            const searchInput = document.getElementById('candidateSearchInput');
+            const dropdown = document.getElementById('candidateDropdown');
+            const hiddenIdInput = document.getElementById('selectedCandidateId');
+
+            try {
+                const res = await fetch('/api/v1/candidates');
+                candidateList = await res.json();
+
+                function renderDropdown(filterText = '') {
+                    const query = filterText.toLowerCase().trim();
+                    const matches = candidateList.filter(c => {
+                        const name = (c.full_name || c.document_name || '').toLowerCase();
+                        const role = (c.target_role || '').toLowerCase();
+                        return name.includes(query) || role.includes(query);
+                    });
+
+                    if (matches.length === 0) {
+                        dropdown.innerHTML = `<div class="p-2.5 text-gray-400 text-center italic">No matching candidates</div>`;
+                    } else {
+                        dropdown.innerHTML = matches.map(c => `
+                            <div class="p-2.5 hover:bg-blue-50 cursor-pointer flex items-center justify-between candidate-item" 
+                                 data-id="${c.id}" data-name="${c.full_name || c.document_name}">
+                                <div>
+                                    <p class="font-bold text-gray-800">${c.full_name || c.document_name}</p>
+                                    <p class="text-[10px] text-gray-500">${c.target_role || 'Software Engineer'} • ${c.experience_level || 'Mid-Level'}</p>
+                                </div>
+                                <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded font-semibold">${translations[currentLang].selectTag}</span>
+                            </div>
+                        `).join('');
+
+                        dropdown.querySelectorAll('.candidate-item').forEach(item => {
+                            item.addEventListener('click', () => {
+                                hiddenIdInput.value = item.getAttribute('data-id');
+                                searchInput.value = item.getAttribute('data-name');
+                                dropdown.classList.add('hidden');
+                            });
+                        });
+                    }
+                    dropdown.classList.remove('hidden');
+                }
+
+                searchInput.addEventListener('focus', () => renderDropdown(searchInput.value));
+                searchInput.addEventListener('input', (e) => {
+                    hiddenIdInput.value = '';
+                    renderDropdown(e.target.value);
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!searchInput.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.classList.add('hidden');
+                    }
+                });
+
+            } catch (err) {
+                console.error("Failed to load candidates:", err);
+            }
+        }
+
+        // Generate Interview Prep Action
+        document.getElementById('generateBtn').addEventListener('click', async () => {
+            const candidateId = document.getElementById('selectedCandidateId').value;
+            const candidateName = document.getElementById('candidateSearchInput').value.trim();
+            const jobTitle = document.getElementById('jobTitleInput').value.trim();
+            const jdText = document.getElementById('jdInput').value.trim();
+            const container = document.getElementById('resultsContainer');
+            const t = translations[currentLang];
+
+            if (!jobTitle || !jdText) {
+                alert("Please provide both Job Title and Job Description.");
+                return;
+            }
+
+            container.innerHTML = `
+                <div class="p-8 text-center text-blue-600 animate-pulse font-semibold">
+                    🧠 Analyzing candidate background & generating interview kit via Llama 3.1...
+                </div>
+            `;
+
+            try {
+                const res = await fetch('/api/v1/interview/prep', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        candidate_id: candidateId || null,
+                        candidate_name: candidateName || null,
+                        job_title: jobTitle,
+                        job_description: jdText,
+                        language: currentLang
+                    })
+                });
+
+                if (!res.ok) throw new Error("Failed to generate prep kit");
+                const data = await res.json();
+
+                let questionsHTML = data.questions.map((q, idx) => `
+                    <div class="bg-gray-50 p-3.5 rounded-lg border border-gray-200 space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-blue-900">Q${idx + 1}. [${q.category}]</span>
+                        </div>
+                        <p class="font-semibold text-gray-800">${q.question}</p>
+                        <div class="bg-white p-2.5 rounded border border-gray-100 text-[11px] space-y-1">
+                            <p class="text-green-700 font-medium">${t.expectedAnswerTitle}</p>
+                            <p class="text-gray-600">${q.expected_answer}</p>
+                        </div>
+                    </div>
+                `).join('');
+
+                container.innerHTML = `
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200 space-y-2">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-bold text-blue-950 text-sm">${data.candidate_name}</h3>
+                            <span class="bg-blue-600 text-white px-2.5 py-1 rounded-full text-xs font-bold">${data.fit_score}% Fit Match</span>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed">${data.executive_summary}</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-green-50/60 p-3 rounded-lg border border-green-200">
+                            <p class="font-bold text-green-900 mb-1">${t.matchedSkillsTitle}</p>
+                            <ul class="list-disc list-inside text-green-800 space-y-0.5">${data.matched_skills.map(s => `<li>${s}</li>`).join('')}</ul>
+                        </div>
+                        <div class="bg-amber-50/60 p-3 rounded-lg border border-amber-200">
+                            <p class="font-bold text-amber-900 mb-1">${t.skillGapsTitle}</p>
+                            <ul class="list-disc list-inside text-amber-800 space-y-0.5">${data.skill_gaps.map(s => `<li>${s}</li>`).join('')}</ul>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 pt-2">
+                        <h4 class="font-bold text-gray-900 uppercase text-[11px] tracking-wider">${t.questionsTitle}</h4>
+                        ${questionsHTML}
+                    </div>
+                `;
+
+            } catch (err) {
+                console.error(err);
+                container.innerHTML = `<div class="p-4 text-red-600 bg-red-50 rounded-lg">⚠️ Error generating interview prep. Ensure FastAPI and Ollama are active.</div>`;
+            }
+        });
+
+        document.getElementById('toggleSidebar').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('hidden');
+        });
+
+        document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+        document.getElementById('lang-jp').addEventListener('click', () => setLanguage('jp'));
+
+        setLanguage(currentLang);
+        loadCandidates();
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+Elena Rostova — Staff UX/UI & Product Designer
+Location: San Francisco, CA | Email: elena.rostova.design@example.com
+
+Professional Summary
+Staff Product Designer with 11+ years of experience leading design strategy, human-centered research, and complex component systems for mobile and web apps. Expertise in transforming dense, complex B2B workflows into modern, intuitive interfaces.
+
+Core Competencies
+Design Systems & UI: Figma (Tokens, Auto-layout, Component Libraries), Adobe CC, Principle, Protopie
+
+Research & UX: Design Thinking Workshops, User Journey Mapping, Contextual Inquiry, Quantitative & Qualitative Testing, Information Architecture
+
+Strategy: Product Discovery, Accessibility Design (WCAG 2.1 AA/AAA), Design Mentorship, Cross-Functional Leadership
+
+Professional Experience
+Staff Product Designer | Pulse Digital (2021 – Present)
+
+Spearheads user experience strategy across 3 core SaaS product lines used by 300,000+ business professionals globally.
+
+Built and launched "Pulse UI," an open-source design system used across 14 engineering teams, increasing design-to-development velocity by 45%.
+
+Led a end-to-end design overhaul of the mobile payment app, which increased overall task-completion success rates from 72% to 96%.
+
+Senior Product Designer | Studio Creative (2017 – 2021)
+
+Conducted 100+ usability sessions, interviews, and card-sorting exercises to reshape complex enterprise admin portals.
+
+Partnered closely with product management and front-end engineering leads to translate business requirements into wireframes, high-fidelity mockups, and interactive prototypes.
+
+Championed accessibility (WCAG 2.1 AA) standard implementation across all digital properties, mitigating corporate compliance risk.
+
+UX/UI Designer | Apex Interactive Agency (2014 – 2017)
+
+Designed web interfaces, marketing pages, and mobile applications for Fortune 500 clients in fintech, healthcare, and retail.
+
+Created user personas, workflow diagrams, and interactive prototypes using Sketch and InVision.
+
+Visual Designer | Vanguard Media (2012 – 2014)
+
+Crafted digital media assets, display ads, landing pages, and branding guidelines for corporate clients.
+
+Education
+B.F.A. in Graphic Design & Human-Computer Interaction | California College of the Arts (2008 – 2012)

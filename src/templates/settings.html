@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Talent Intelligence - Settings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col text-gray-800">
+
+    <!-- TOP NAVBAR -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-30 h-16 flex items-center justify-between px-6 shadow-sm">
+        <div class="flex items-center space-x-4">
+            <button id="toggleSidebar" class="text-gray-500 hover:text-gray-700 p-1 rounded-md hover:bg-gray-100">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <div class="flex items-center space-x-2">
+                <span class="bg-blue-600 text-white p-1.5 rounded-lg text-sm font-bold">HR</span>
+                <span class="font-bold text-gray-800 text-base tracking-tight" id="txt-brand">TalentFlow AI</span>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-6">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800" id="txt-engine-status">
+                ● Vector Engine Active
+            </span>
+
+            <div class="inline-flex rounded-md shadow-sm border border-gray-200 p-0.5 bg-gray-50 text-xs font-semibold">
+                <button id="lang-en" class="px-2.5 py-1 rounded bg-blue-600 text-white shadow-sm transition">EN</button>
+                <button id="lang-jp" class="px-2.5 py-1 rounded text-gray-600 hover:text-gray-900 transition">日本語</button>
+            </div>
+
+            <div class="flex items-center space-x-2 pl-2 border-l border-gray-200">
+                <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center text-xs border border-blue-200">HR</div>
+                <span class="text-xs font-medium text-gray-700 hidden sm:inline-block">Recruiter Admin</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex flex-1 relative overflow-hidden">
+        <!-- SIDEBAR -->
+        <aside id="sidebar" class="w-64 bg-white border-r border-gray-200 flex-shrink-0 transition-all duration-300 flex flex-col justify-between">
+            <div class="p-4 space-y-6">
+                <nav class="space-y-1">
+                    <a href="dashboard" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">📊</span>
+                        <span id="nav-dashboard">Dashboard</span>
+                    </a>
+                    <a href="resumes" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">📁</span>
+                        <span id="nav-resumes">Resume Processing</span>
+                    </a>
+                    <a href="candidates" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">👥</span>
+                        <span id="nav-candidates">Candidate Database</span>
+                    </a>
+                    <a href="interview" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">🎯</span>
+                        <span id="nav-interview">Interview Prep</span>
+                    </a>
+                    <a href="rag" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">🧠</span>
+                        <span id="nav-rag">Agentic RAG Search</span>
+                    </a>
+                    <a href="settings" class="flex items-center space-x-3 px-3 py-2 rounded-lg bg-blue-50 text-blue-700 font-semibold text-xs transition">
+                        <span class="text-base">⚙️</span>
+                        <span id="nav-settings">Settings</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="p-4 border-t border-gray-100 bg-gray-50/50">
+                <p class="text-[10px] text-gray-400 font-medium" id="txt-storage-info">Storage: 42.8 MB / 5 GB</p>
+                <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1.5">
+                    <div class="bg-blue-600 h-1.5 rounded-full" style="width: 15%"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN WORKSPACE -->
+        <main class="flex-1 overflow-y-auto p-6 space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-xl font-bold text-gray-900" id="txt-title">System & Pipeline Configuration</h1>
+                    <p class="text-xs text-gray-500 mt-0.5" id="txt-subtitle">Configure SHA-256 deduplication sensitivity, vector embeddings, token optimization, and system maintenance.</p>
+                </div>
+                <button id="btn-reset-defaults" class="text-xs text-gray-500 hover:text-red-600 font-medium border border-gray-300 hover:border-red-300 px-3 py-1.5 rounded-lg bg-white transition">
+                    Reset Defaults
+                </button>
+            </div>
+
+            <!-- TABBED NAVIGATION -->
+            <div class="border-b border-gray-200 text-xs font-semibold flex space-x-6">
+                <button class="tab-btn pb-3 border-b-2 border-blue-600 text-blue-600" data-tab="pipeline" id="tab-nav-pipeline">1. Ingestion & Vector DB</button>
+                <button class="tab-btn pb-3 border-b-2 border-transparent text-gray-500 hover:text-gray-800" data-tab="agent" id="tab-nav-agent">2. Agentic LLM & Tokens</button>
+                <button class="tab-btn pb-3 border-b-2 border-transparent text-gray-500 hover:text-gray-800" data-tab="security" id="tab-nav-security">3. Security & Access</button>
+                <button class="tab-btn pb-3 border-b-2 border-transparent text-gray-500 hover:text-gray-800" data-tab="maintenance" id="tab-nav-maintenance">4. System Maintenance</button>
+            </div>
+
+            <div class="max-w-3xl space-y-6 text-xs">
+                
+                <!-- TAB 1: INGESTION & VECTOR DB -->
+                <div id="tab-pipeline" class="tab-content space-y-6">
+                    <!-- Card 1: Ingestion Pipeline -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
+                        <h2 class="font-bold text-sm text-gray-800 border-b pb-2 flex items-center justify-between">
+                            <span>Resume Ingestion & Deduplication</span>
+                            <span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded">Core Pipeline</span>
+                        </h2>
+
+                        <div class="space-y-2">
+                            <label class="font-bold text-gray-800 block" id="lbl-hash-algo">Deduplication Engine Strategy</label>
+                            <select id="setting-dedup" class="w-full border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-blue-500 outline-none">
+                                <option value="sha256">SHA-256 Memory Content Hash (Strict Gatekeeper)</option>
+                                <option value="levenshtein">Fuzzy Text Match (Levenshtein Distance Threshold > 90%)</option>
+                                <option value="vector-similarity">Cosine Vector Similarity Threshold (> 0.95)</option>
+                                <option value="disabled">Disabled (Allow Duplicates for Testing)</option>
+                            </select>
+                            <p class="text-[11px] text-gray-400">Prevents candidate document duplication before hitting pgvector storage.</p>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="font-bold text-gray-800 block">Chunk Size & Overlap Splitter</label>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <span class="text-gray-500 block mb-1">Chunk Size (Tokens)</span>
+                                    <input type="number" id="setting-chunk-size" value="512" class="w-full border border-gray-300 rounded-lg p-2 bg-white">
+                                </div>
+                                <div>
+                                    <span class="text-gray-500 block mb-1">Chunk Overlap</span>
+                                    <input type="number" id="setting-chunk-overlap" value="64" class="w-full border border-gray-300 rounded-lg p-2 bg-white">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Vector Embedding Settings -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
+                        <h2 class="font-bold text-sm text-gray-800 border-b pb-2">Vector Embeddings & pgvector</h2>
+
+                        <div class="space-y-2">
+                            <label class="font-bold text-gray-800 block" id="lbl-vector-model">Embedding Model Choice</label>
+                            <select id="setting-embedding-model" class="w-full border border-gray-300 rounded-lg p-2 bg-white focus:ring-2 focus:ring-blue-500 outline-none">
+                                <option value="nomic-embed-text">nomic-embed-text (Ollama Local - 768 dims)</option>
+                                <option value="bge-m3">BGE-M3 Multilingual (Optimized for Japanese/English - 1024 dims)</option>
+                                <option value="text-embedding-3-small">text-embedding-3-small (OpenAI Cloud - 1536 dims)</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="font-bold text-gray-800 block">pgvector Distance Metric</label>
+                            <select id="setting-distance-metric" class="w-full border border-gray-300 rounded-lg p-2 bg-white">
+                                <option value="cosine">Cosine Distance (<=>)</option>
+                                <option value="l2">Euclidean / L2 Distance (<->)</option>
+                                <option value="inner">Inner Product (<#>)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: AGENTIC LLM & TOKEN OPTIMIZATION -->
+                <div id="tab-agent" class="tab-content space-y-6 hidden">
+                    <!-- LLM Reasoning Parameters -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
+                        <h2 class="font-bold text-sm text-gray-800 border-b pb-2">Ollama & LangGraph Reasoning Engine</h2>
+
+                        <div class="space-y-2">
+                            <label class="font-bold text-gray-800 block">Active LLM Model</label>
+                            <select id="setting-llm-model" class="w-full border border-gray-300 rounded-lg p-2 bg-white">
+                                <option value="llama3.1">llama3.1:8b (Local Ollama Instance)</option>
+                                <option value="qwen2.5">qwen2.5:7b (Enhanced Japanese & Multilingual Understanding)</option>
+                                <option value="mistral">mistral:7b-instruct</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <label class="font-bold text-gray-800">Temperature (Creativity / Strictness)</label>
+                                <span id="val-temp" class="text-blue-600 font-bold">0.1</span>
+                            </div>
+                            <input type="range" id="setting-temperature" min="0.0" max="1.0" step="0.05" value="0.1" class="w-full accent-blue-600">
+                            <p class="text-[10px] text-gray-400">Lower temperatures (0.0 - 0.2) ensure factual candidate extraction without hallucinating skill levels.</p>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="font-bold text-gray-800 block">RAG Top-K Document Retrieval Count</label>
+                            <input type="number" id="setting-top-k" min="1" max="20" value="4" class="w-full border border-gray-300 rounded-lg p-2 bg-white">
+                        </div>
+                    </div>
+
+                    <!-- Token Optimization & Context Window Tuning -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
+                        <h2 class="font-bold text-sm text-gray-800 border-b pb-2 flex items-center justify-between">
+                            <span id="txt-token-title">Token Optimization & Context Window</span>
+                            <span class="text-[10px] bg-amber-50 text-amber-700 px-2 py-0.5 rounded font-medium">Cost & Latency Control</span>
+                        </h2>
+
+                        <!-- Max Context Window Limit -->
+                        <div class="space-y-2">
+                            <label class="font-bold text-gray-800 block">Max Context Window Limit</label>
+                            <select id="setting-context-window" class="w-full border border-gray-300 rounded-lg p-2 bg-white">
+                                <option value="4096">4,096 Tokens (Fast Response / Low Memory)</option>
+                                <option value="8192" selected>8,192 Tokens (Balanced - Default for llama3.1)</option>
+                                <option value="16384">16,384 Tokens (Extended Multi-Resume Synthesis)</option>
+                                <option value="32768">32,768 Tokens (Full Batch Analysis)</option>
+                            </select>
+                            <p class="text-[10px] text-gray-400">Controls maximum prompt context allocated to Ollama per Agentic RAG query.</p>
+                        </div>
+
+                        <!-- Max Generation Output Tokens -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <label class="font-bold text-gray-800">Max Generation Response Length (Tokens)</label>
+                                <span id="val-max-tokens" class="text-blue-600 font-bold">1,024</span>
+                            </div>
+                            <input type="range" id="setting-max-tokens" min="256" max="4096" step="128" value="1024" class="w-full accent-blue-600">
+                            <p class="text-[10px] text-gray-400">Caps agent chat completion lengths to reduce generation latency and API resource consumption.</p>
+                        </div>
+
+                        <!-- Prompt Compression Strategy -->
+                        <div class="space-y-2">
+                            <label class="font-bold text-gray-800 block">RAG Prompt Compression Strategy</label>
+                            <select id="setting-prompt-compression" class="w-full border border-gray-300 rounded-lg p-2 bg-white">
+                                <option value="none">Raw Chunks (No Compression - Full Accuracy)</option>
+                                <option value="stop-words" selected>Filter Noise & Stop Words (Reduces tokens by ~20%)</option>
+                                <option value="llm-summarize">Pre-Summarize Extracted Snippets (Reduces tokens by ~45%)</option>
+                            </select>
+                        </div>
+
+                        <!-- Token Optimization Toggles -->
+                        <div class="space-y-3 pt-2">
+                            <div class="flex items-center justify-between py-2 border-t border-gray-100">
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Prompt / KV Cache Reuse</h4>
+                                    <p class="text-gray-400 text-[11px]">Cache system prompt prefixes in local Ollama VRAM to speed up query evaluation by up to 60%.</p>
+                                </div>
+                                <input type="checkbox" id="setting-kv-cache" checked class="w-4 h-4 text-blue-600 rounded">
+                            </div>
+
+                            <div class="flex items-center justify-between py-2 border-t border-gray-100">
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Strict Markdown Output Constraints</h4>
+                                    <p class="text-gray-400 text-[11px]">Enforce concise bullet points and direct candidate answers to minimize conversational filler tokens.</p>
+                                </div>
+                                <input type="checkbox" id="setting-compact-formatting" checked class="w-4 h-4 text-blue-600 rounded">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: SECURITY & ACCESS -->
+                <div id="tab-security" class="tab-content space-y-6 hidden">
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
+                        <h2 class="font-bold text-sm text-gray-800 border-b pb-2">Privacy & Compliance Settings</h2>
+
+                        <div class="flex items-center justify-between py-2 border-b border-gray-100">
+                            <div>
+                                <h4 class="font-bold text-gray-800">Automatic PII Masking</h4>
+                                <p class="text-gray-400 text-[11px]">Mask phone numbers, email addresses, and home addresses in agent chat outputs.</p>
+                            </div>
+                            <input type="checkbox" id="setting-pii" checked class="w-4 h-4 text-blue-600 rounded">
+                        </div>
+
+                        <div class="flex items-center justify-between py-2 border-b border-gray-100">
+                            <div>
+                                <h4 class="font-bold text-gray-800">Strict Audit Logging</h4>
+                                <p class="text-gray-400 text-[11px]">Log candidate query history and document download events to PostgreSQL audit table.</p>
+                            </div>
+                            <input type="checkbox" id="setting-audit" checked class="w-4 h-4 text-blue-600 rounded">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: SYSTEM MAINTENANCE -->
+                <div id="tab-maintenance" class="tab-content space-y-6 hidden">
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
+                        <h2 class="font-bold text-sm text-gray-800 border-b pb-2 text-red-600">Database & Vector Storage Maintenance</h2>
+
+                        <div class="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg">
+                            <div>
+                                <h4 class="font-bold text-gray-800">Clear Storage Cache</h4>
+                                <p class="text-gray-400 text-[11px]">Purge temporary PDF/DOCX file stream cache.</p>
+                            </div>
+                            <button id="btn-purge-cache" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-1.5 rounded font-bold transition">Purge Cache</button>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-red-50 border border-red-200 rounded-lg">
+                            <div>
+                                <h4 class="font-bold text-red-800">Reindex pgvector Tables</h4>
+                                <p class="text-red-500 text-[11px]">Rebuild HNSW/IVFFlat indexes for candidate embeddings.</p>
+                            </div>
+                            <button id="btn-reindex" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded font-bold transition">Reindex DB</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SAVE BAR -->
+                <div class="pt-4 flex justify-between items-center bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                    <span class="text-[11px] text-gray-400" id="txt-last-saved">Last saved: Not configured</span>
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-bold shadow transition flex items-center space-x-2" id="btn-save">
+                        <span>Save Configurations</span>
+                    </button>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-gray-900 text-white text-xs px-4 py-3 rounded-lg shadow-xl hidden transition-all duration-300 flex items-center space-x-2">
+        <span class="text-green-400">✓</span>
+        <span id="toast-msg">Settings saved successfully!</span>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        const translations = {
+            en: {
+                brand: "TalentFlow AI",
+                engineStatus: "● Vector Engine Active",
+                navDashboard: "Dashboard",
+                navResumes: "Resume Processing",
+                navCandidates: "Candidate Database",
+                navInterview: "Interview Prep",
+                navRag: "Agentic RAG Search",
+                navSettings: "Settings",
+                storageInfo: "Storage: 42.8 MB / 5 GB",
+                title: "System & Pipeline Configuration",
+                subtitle: "Configure SHA-256 deduplication sensitivity, vector embeddings, token optimization, and system maintenance.",
+                lblHashAlgo: "Deduplication Engine Strategy",
+                lblVectorModel: "Embedding Model Choice",
+                btnSave: "Save Configurations",
+                tokenTitle: "Token Optimization & Context Window",
+                tabPipeline: "1. Ingestion & Vector DB",
+                tabAgent: "2. Agentic LLM & Tokens",
+                tabSecurity: "3. Security & Access",
+                tabMaintenance: "4. System Maintenance"
+            },
+            jp: {
+                brand: "TalentFlow AI",
+                engineStatus: "● ベクトルエンジン稼働中",
+                navDashboard: "ダッシュボード",
+                navResumes: "履歴書処理",
+                navCandidates: "候補者データベース",
+                navInterview: "面接対策",
+                navRag: "Agentic RAG検索",
+                navSettings: "設定",
+                storageInfo: "ストレージ: 42.8 MB / 5 GB",
+                title: "システム・パイプライン設定",
+                subtitle: "SHA-256重複チェック感度、ベクトル埋め込みモデル、トークン最適化、システム保守設定",
+                lblHashAlgo: "重複排除エンジンの戦略",
+                lblVectorModel: "埋め込み（Embedding）モデルの選択",
+                btnSave: "設定を保存",
+                tokenTitle: "トークン最適化とコンテキストウィンドウ",
+                tabPipeline: "1. 取り込み＆ベクトルDB",
+                tabAgent: "2. LLM＆トークン設定",
+                tabSecurity: "3. セキュリティ＆アクセス",
+                tabMaintenance: "4. システム保守"
+            }
+        };
+
+        let currentLang = localStorage.getItem('appLang') || 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('appLang', lang);
+            const t = translations[lang];
+
+            document.getElementById('lang-en').className = lang === 'en' ? "px-2.5 py-1 rounded bg-blue-600 text-white shadow-sm transition" : "px-2.5 py-1 rounded text-gray-600 hover:text-gray-900 transition";
+            document.getElementById('lang-jp').className = lang === 'jp' ? "px-2.5 py-1 rounded bg-blue-600 text-white shadow-sm transition" : "px-2.5 py-1 rounded text-gray-600 hover:text-gray-900 transition";
+
+            document.getElementById('txt-brand').innerText = t.brand;
+            document.getElementById('txt-engine-status').innerText = t.engineStatus;
+            document.getElementById('nav-dashboard').innerText = t.navDashboard;
+            document.getElementById('nav-resumes').innerText = t.navResumes;
+            document.getElementById('nav-candidates').innerText = t.navCandidates;
+            document.getElementById('nav-interview').innerText = t.navInterview;
+            document.getElementById('nav-rag').innerText = t.navRag;
+            document.getElementById('nav-settings').innerText = t.navSettings;
+            document.getElementById('txt-storage-info').innerText = t.storageInfo;
+
+            document.getElementById('txt-title').innerText = t.title;
+            document.getElementById('txt-subtitle').innerText = t.subtitle;
+            document.getElementById('lbl-hash-algo').innerText = t.lblHashAlgo;
+            document.getElementById('lbl-vector-model').innerText = t.lblVectorModel;
+            document.getElementById('btn-save').innerText = t.btnSave;
+            document.getElementById('txt-token-title').innerText = t.tokenTitle;
+
+            document.getElementById('tab-nav-pipeline').innerText = t.tabPipeline;
+            document.getElementById('tab-nav-agent').innerText = t.tabAgent;
+            document.getElementById('tab-nav-security').innerText = t.tabSecurity;
+            document.getElementById('tab-nav-maintenance').innerText = t.tabMaintenance;
+        }
+
+        // Tab Switching Logic
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTab = btn.getAttribute('data-tab');
+
+                tabBtns.forEach(b => {
+                    b.classList.remove('border-blue-600', 'text-blue-600');
+                    b.classList.add('border-transparent', 'text-gray-500');
+                });
+                btn.classList.add('border-blue-600', 'text-blue-600');
+                btn.classList.remove('border-transparent', 'text-gray-500');
+
+                tabContents.forEach(content => {
+                    if (content.id === `tab-${targetTab}`) {
+                        content.classList.remove('hidden');
+                    } else {
+                        content.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Temperature Slider Listener
+        const tempSlider = document.getElementById('setting-temperature');
+        const tempVal = document.getElementById('val-temp');
+        tempSlider.addEventListener('input', (e) => {
+            tempVal.innerText = e.target.value;
+        });
+
+        // Max Tokens Slider Listener
+        const maxTokenSlider = document.getElementById('setting-max-tokens');
+        const maxTokenVal = document.getElementById('val-max-tokens');
+        maxTokenSlider.addEventListener('input', (e) => {
+            maxTokenVal.innerText = Number(e.target.value).toLocaleString();
+        });
+
+        // Toast Helper
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Save Configurations
+        document.getElementById('btn-save').addEventListener('click', () => {
+            const config = {
+                dedup: document.getElementById('setting-dedup').value,
+                chunkSize: document.getElementById('setting-chunk-size').value,
+                chunkOverlap: document.getElementById('setting-chunk-overlap').value,
+                embeddingModel: document.getElementById('setting-embedding-model').value,
+                distanceMetric: document.getElementById('setting-distance-metric').value,
+                llmModel: document.getElementById('setting-llm-model').value,
+                temperature: tempSlider.value,
+                topK: document.getElementById('setting-top-k').value,
+                contextWindow: document.getElementById('setting-context-window').value,
+                maxTokens: maxTokenSlider.value,
+                promptCompression: document.getElementById('setting-prompt-compression').value,
+                kvCache: document.getElementById('setting-kv-cache').checked,
+                compactFormatting: document.getElementById('setting-compact-formatting').checked,
+                pii: document.getElementById('setting-pii').checked,
+                audit: document.getElementById('setting-audit').checked
+            };
+
+            localStorage.setItem('mockSettings', JSON.stringify(config));
+            document.getElementById('txt-last-saved').innerText = `Last saved: ${new Date().toLocaleTimeString()}`;
+            showToast("Configurations saved & applied to local engine!");
+        });
+
+        // Reset Defaults Listener
+        document.getElementById('btn-reset-defaults').addEventListener('click', () => {
+            localStorage.removeItem('mockSettings');
+            tempSlider.value = 0.1;
+            tempVal.innerText = '0.1';
+            maxTokenSlider.value = 1024;
+            maxTokenVal.innerText = '1,024';
+            showToast("Reset settings to factory defaults!");
+        });
+
+        // Purge & Reindex Actions
+        document.getElementById('btn-purge-cache').addEventListener('click', () => showToast("Temporary stream cache purged (42.8 MB freed)"));
+        document.getElementById('btn-reindex').addEventListener('click', () => showToast("pgvector index rebuilt successfully!"));
+
+        // Navigation & Language Events
+        document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+        document.getElementById('lang-jp').addEventListener('click', () => setLanguage('jp'));
+        document.getElementById('toggleSidebar').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('hidden');
+        });
+
+        // Initialize Page
+        setLanguage(currentLang);
+    </script>
+</body>
+</html>

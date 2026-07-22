@@ -1,0 +1,30 @@
+May Thu Aung — Mid-Level UI/UX Designer
+Seniority: Mid-Level (5 years experience)
+
+Target Roles: Product Designer, UX/UI Designer
+
+Education
+B.C.Sc. in Knowledge Engineering — University of Computer Studies, Mandalay (UCSM) (Graduated 2021)
+
+Profile Summary
+User-centric Product Designer with 5 years of experience crafting intuitive interfaces for mobile and web SaaS applications. Skilled in running usability interviews, prototyping complex user flows, and maintaining component libraries.
+
+Core Skills
+Design & Prototyping: Figma, Auto-Layout, Interactive Prototyping, Wireframing, Adobe CC
+
+UX Methods: User Research, Usability Testing, Information Architecture, Journey Mapping
+
+Collaboration: Design Systems, Developer Handoff, Accessibility Compliance (WCAG 2.1)
+
+Key Experience
+UI/UX Designer | BrightApp Digital (2023 – Present)
+
+Redesigned core onboarding flows for a B2B SaaS mobile app, increasing user setup completion rates by 28%.
+
+Maintained and expanded a 40+ component design system in Figma used by 3 separate product squads.
+
+Conducted 30+ qualitative user interviews to validate feature wireframes prior to engineering handoff.
+
+Associate UX Designer | Creative Pulse Agency (2021 – 2023)
+
+Designed responsive web layouts and marketing landing pages for e-commerce clients.

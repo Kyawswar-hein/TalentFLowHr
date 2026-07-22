@@ -1,0 +1,28 @@
+Kyaw Zeya — Principal Systems Architect
+Seniority: Principal Level (12+ years experience)
+
+Target Roles: Principal Architect, Staff Software Engineer
+
+Education
+M.E. in Information Technology — Mandalay Technological University (MTU) (Graduated 2016)
+
+B.E. in Information Technology — MTU (Graduated 2014)
+
+Profile Summary
+Principal Systems Architect with 12+ years of experience leading the architectural design, security, and scaling of high-concurrency cloud infrastructures. Expert in event-driven systems, domain-driven design (DDD), and system refactoring.
+
+Core Skills
+Architecture: Distributed Systems, Microservices, Event-Driven Architecture, Domain-Driven Design (DDD)
+
+Tech Stack: Go, Java, Node.js, Kafka, Redis, AWS (EKS, Lambda, DynamoDB)
+
+Leadership: System Governance, Architectural Decision Records (ADRs), Technical Strategy
+
+Key Experience
+Principal Systems Architect | Enterprise Cloud Tech (2021 – Present)
+
+Spearheaded the architectural migration of a core monolithic application into distributed Go and Kafka microservices.
+
+Reduced infrastructure operational costs by $250K/year through cloud resource right-sizing and serverless offloading.
+
+Authored system-wide architectural standards and security guidelines adopted across 6 cross-functional engineering teams.

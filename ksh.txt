@@ -1,0 +1,51 @@
+KYAW SWAR HEIN
+
+Mandalay, Myanmar | kyawswarhein@example.com | [+959-XXXXXXXXX] | linkedin.com/in/kyawswarhein
+
+PROFESSIONAL SUMMARY
+
+Detail-oriented Engineering student at the Myanmar Institute of Information Technology with hands-on experience in full-stack software development, automation systems, and database management. Proven ability to build monitoring systems, analyze operational metrics, and manage complex system architectures. Quickly adapts to new technologies and workflows, bringing strong analytical reasoning and technical problem-solving skills to the Binance Accelerator Program to support Risk Operations and safeguard the Web3 ecosystem.
+
+EDUCATION
+
+Myanmar Institute of Information Technology (MIIT) | Mandalay, Myanmar
+
+Bachelor of Engineering (B.E.) in Electronic and Communication Engineering / Computer Science | Expected Graduation: 2026
+
+Relevant Coursework: Database Management Systems, Data Structures & Algorithms, Systems Automation, Computer Networks & Security.
+
+TECHNICAL SKILLS
+
+Data & Backend: SQL (MySQL, PostgreSQL), Spring Data JPA, Java, Laravel, Node.js
+
+Core Competencies: System Monitoring, Metrics Tracking, Trend Analysis, Operational Workflows, Technical Risk Evaluation
+
+Tools & Frameworks: Spring Boot, MERN Stack (MongoDB, Express.js, React, Node.js), Python, Git
+
+Automation & Tech: n8n Workflow Automation, TensorFlow, CAD/CAM Systems
+
+PROJECTS & EXPERIENCE
+
+Review Count Management System (RCMS) | Full-Stack Developer & System Designer | Jan 2026 – Present
+
+Designed and built a metrics tracking system focused on project quality evaluation and operational compliance.
+
+Structured complex relational databases, creating highly optimized project tables to organize tiers, progress, and performance indicators.
+
+Implemented automated logic to monitor system inputs, flagging discrepancies and abnormal reporting trends for immediate evaluation.
+
+DIR-ACE Technology Ltd (DAT) | Software Engineering Intern | Jan 2026 – Apr 2026
+
+Managed multiple project tracking queues simultaneously in a fast-paced environment, meeting strict technical delivery milestones.
+
+Built secure, high-performance REST APIs using Spring Boot, evaluating data flows to prevent unauthorized system interactions.
+
+Conducted rigorous code and data testing, making discretionary implementation decisions based on architectural standards and technical research.
+
+E-Bus Ticketing & Inventory System | Lead Backend Developer | Feb 2026 – Mar 2026
+
+Developed a complex transaction and inventory management engine using MERN stack and Laravel frameworks.
+
+Implemented real-time seat inventory locks and payment checks to monitor transaction legitimacy and prevent double-booking anomalies.
+
+Analyzed data logs to resolve transaction failures, ensuring platform consistency and minimizing system loss.

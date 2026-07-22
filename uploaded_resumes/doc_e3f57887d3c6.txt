@@ -1,0 +1,46 @@
+Priya Patel — Principal Backend Java Architect
+Location: New York, NY | Email: priya.patel.dev@example.com
+
+Professional Summary
+Principal Java Developer and Distributed Systems Architect with 11+ years of experience designing secure, ultra-low-latency financial processing systems. Deep expertise in Java internals, Spring Framework ecosystem, reactive messaging architectures, and relational database tuning.
+
+Technical Skills
+Core Technologies: Java (8 through 21), JVM Tuning, Thread Management, Data Structures & Algorithms
+
+Frameworks: Spring Boot, Spring Cloud, Spring Security, Hibernate/JPA, Micronaut
+
+Messaging & Data: Apache Kafka, RabbitMQ, PostgreSQL, Oracle DB, Redis, Hazelcast
+
+Architecture: Microservices, Event-Driven Architecture, RESTful API Design, gRPC, Distributed Caching
+
+Professional Experience
+Principal Backend Architect | Enterprise Core Inc. (2022 – Present)
+
+Leads the architectural design of a core payment processing engine handling over $4B in daily transactional volume.
+
+Re-engineered legacy synchronous processing pipelines into a reactive event-driven architecture using Kafka and Spring WebFlux, boosting throughput by 300%.
+
+Conducted JVM performance tuning and garbage collection optimization, lowering tail latency (p99) from 180ms to 12ms.
+
+Senior Java Engineer | CodeCraft Labs (2017 – 2022)
+
+Led a team of 6 engineers in building microservices that handled high-frequency trading data feeds with Spring Boot and Redis.
+
+Implemented distributed tracing (Zipkin, Jaeger) and centralized logging (ELK) across 40+ microservices, reducing MTTR (Mean Time to Resolution) by 60%.
+
+Designed secure REST APIs protected with OAuth2, JWT, and mutual TLS (mTLS) communication standards.
+
+Software Engineer | Apex Financial Technologies (2014 – 2017)
+
+Maintained and extended enterprise Java EE applications, writing complex SQL stored procedures and Hibernate mappings for Oracle databases.
+
+Developed unit and integration test suites using JUnit and Mockito, raising code coverage from 45% to 88%.
+
+Junior Programmer | DataSys Solutions (2013 – 2014)
+
+Wrote core Java utilities for data conversion, file parsing, and batch job processing.
+
+Education
+M.S. in Computer Science | Columbia University (2011 – 2013)
+
+B.S. in Computer Engineering | NYU Tandon School of Engineering (2007 – 2011)

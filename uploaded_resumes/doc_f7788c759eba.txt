@@ -1,0 +1,48 @@
+David O'Connell — Director of Program Management (PMP, CSM)
+Location: Boston, MA | Email: doconnell.pmp@example.com
+
+Professional Summary
+Director of Program Management with 14+ years of experience overseeing complex global technology programs, digital transformations, and cross-functional engineering teams. Successfully managed portfolio budgets in excess of $15M while streamlining Agile release workflows.
+
+Core Competencies
+Program Leadership: Enterprise Program Management, Portfolio Planning, Vendor & Stakeholder Management, Resource Planning
+
+Frameworks & Methodologies: SAFe (Scaled Agile Framework), Scrum, Kanban, Waterfall, PMI PMBOK
+
+Software Tools: Jira, Confluence, Asana, MS Project, Smartsheet, Tableau, Miro
+
+Professional Experience
+Director of Program Management | Nexa Solutions (2021 – Present)
+
+Directs a PMO team of 8 Program Managers overseeing a $15M portfolio of enterprise cloud and software migration programs.
+
+Introduced Scaled Agile Framework (SAFe) practices across a 120-person engineering department, cutting project delivery delays by 35%.
+
+Reports directly to executive leadership (CTO, CPO) on operational status, risk management strategies, and budget allocations.
+
+Senior Technical Program Manager | FinTech Innovations (2016 – 2021)
+
+Managed a 2-year cloud infrastructure migration project for an enterprise banking platform, delivering the project 3 weeks ahead of schedule and $200K under budget.
+
+Facilitated multi-team dependency mapping, risk mitigation sessions, and sprint planning for 6 cross-functional engineering squads.
+
+Reduced critical release blockers by 50% by establishing clear escalation paths and standardized technical documentation in Confluence.
+
+Project Manager | Beacon Health Systems (2013 – 2016)
+
+Led cross-functional teams in deploying software upgrades for hospital management systems across 12 regional facilities.
+
+Enforced strict HIPAA compliance procedures throughout all software deployment phases.
+
+Associate Project Coordinator | NorthEast Tech Services (2010 – 2013)
+
+Tracked deliverables, managed action-item logs, and scheduled sprint ceremonies for custom software development projects.
+
+Certifications & Education
+Program Management Professional (PgMP) – PMI
+
+Project Management Professional (PMP) – PMI
+
+Certified SAFe 5 Agilist – Scaled Agile
+
+B.A. in Business Administration | Boston University (2006 – 2010)

@@ -1,0 +1,42 @@
+Sarah Jenkins — Director of Data Analytics & BI
+Location: Chicago, IL | Email: sarah.j.analytics@example.com
+
+Professional Summary
+Data Analytics Director with 12+ years of experience leveraging data science, advanced SQL, and business intelligence systems to drive revenue growth. Proven record in assembling data engineering teams, building scalable data warehouses, and presenting key insights to C-suite executives.
+
+Core Competencies
+Analytics & DB: Advanced SQL, Python (Pandas, NumPy, Scikit-learn), R, Snowflake, BigQuery, Redshift
+
+BI & Visualization: Tableau, Power BI, Looker, Apache Superset
+
+Methods: Predictive Modeling, A/B Testing Frameworks, Customer Segmentation, Lifetime Value (LTV) Modeling, ETL/ELT Pipeline Architecture
+
+Professional Experience
+Director of Analytics | Global Logistics Co. (2022 – Present)
+
+Lead an international team of 12 data analysts and analytics engineers supporting global supply chain operations across North America, Europe, and Asia.
+
+Architected an enterprise-wide Snowflake data warehouse, consolidating 18 legacy data sources into a single source of truth for 1,500+ employees.
+
+Implemented machine-learning-driven route optimization and fuel usage models, cutting operational transport costs by $3.8M annually.
+
+Lead Data Analyst | FinData Analytics (2018 – 2022)
+
+Created executive-level Tableau dashboards tracking $1.2B in annual recurring revenue (ARR), churn metrics, and customer acquisition costs (CAC).
+
+Designed rigorous A/B testing methodologies for product changes, boosting overall user conversion rates by 14% over a two-year period.
+
+Automated end-to-end ELT pipelines using dbt, Python, and Airflow, reducing reporting latency from 48 hours to near real-time.
+
+Senior Business Analyst | Meridian Retail Group (2015 – 2018)
+
+Performed deep-dive cohort analysis on 4M+ loyalty program members, identifying high-yield segments that increased targeted campaign ROI by 28%.
+
+Data Analyst | Midwest Health Analytics (2012 – 2015)
+
+Queried healthcare claims databases using T-SQL to identify procedural bottlenecks and compliance anomalies.
+
+Education
+M.S. in Predictive Analytics | Northwestern University (2014 – 2016)
+
+B.S. in Statistics | University of Illinois Urbana-Champaign (2008 – 2012)

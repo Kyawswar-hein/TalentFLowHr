@@ -1,0 +1,44 @@
+Alex Chen — Principal Full-Stack Architect
+Location: Seattle, WA | Email: alex.chen@example.com | LinkedIn: linkedin.com/in/alexchen-demo
+
+Professional Summary
+Full-Stack Software Architect with 11+ years of experience leading the design, implementation, and scaling of high-throughput cloud architectures. Track record of modernizing legacy systems, mentoring engineering teams, and optimizing distributed systems to support tens of millions of active users.
+
+Technical Skills
+Languages: TypeScript, JavaScript (Node.js), Python, Go, HTML5/CSS3
+
+Frontend: React, Next.js, Redux Toolkit, Vue.js, WebSockets, Tailwind CSS
+
+Backend: Express, NestJS, Django, FastAPI, GraphQL, REST APIs
+
+Databases & Cloud: PostgreSQL, Redis, MongoDB, DynamoDB, AWS (EC2, ECS, Lambda, CloudFront), Docker, Kubernetes
+
+Professional Experience
+Principal Software Architect | Apex Tech Solutions (2023 – Present)
+
+Spearheaded the migration of a legacy monolithic enterprise platform into a cloud-native microservices architecture using Go, Node.js, and AWS ECS, reducing operational overhead costs by $420K annually.
+
+Designed a real-time event streaming pipeline using Apache Kafka and Redis, supporting 250,000+ concurrent WebSocket connections with sub-50ms latency.
+
+Mentored a organization of 24 engineers, establishing standardized CI/CD practices, code review guidelines, and automated testing frameworks that reduced production bugs by 40%.
+
+Senior Full-Stack Engineer | CloudNet Media (2019 – 2023)
+
+Architected a multi-tenant SaaS dashboard in Next.js and GraphQL, improving page load speeds by 65% across global edge networks.
+
+Refactored core PostgreSQL database schemas and optimized complex queries, reducing DB CPU utilization from 85% to 28% during peak user traffic.
+
+Implemented zero-trust authentication using OAuth2/OIDC and JWT, passing third-party SOC 2 Type II security compliance audits.
+
+Software Engineer | Horizon Interactive (2015 – 2019)
+
+Developed features for a high-traffic e-commerce platform processing over 15,000 transactions daily using React, Express, and MongoDB.
+
+Integrated third-party payment gateways (Stripe, PayPal, Braintree) and automated order fulfillment pipelines.
+
+Junior Web Developer | PixelCraft Studios (2013 – 2015)
+
+Built responsive websites and web components using HTML5, CSS3, JavaScript, and PHP/WordPress for enterprise clients.
+
+Education
+B.S. in Computer Science | University of Washington (2009 – 2013)

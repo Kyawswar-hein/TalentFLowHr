@@ -1,0 +1,48 @@
+Marcus Vance — Lead Infrastructure & DevOps Engineer
+Location: Austin, TX | Email: marcus.vance@example.com
+
+Professional Summary
+DevOps & Infrastructure Lead with 10+ years of experience specializing in Cloud Infrastructure, Reliability Engineering (SRE), Continuous Delivery, and Infrastructure-as-Code (IaC). Managed multi-cloud environments running thousands of microservices with zero downtime goals.
+
+Technical Skills
+Cloud Platforms: AWS (EC2, EKS, RDS, S3, CloudFront, IAM), GCP, Azure
+
+IaC & Automation: Terraform, Terragrunt, Ansible, CloudFormation, Packer
+
+Containers & Orchestration: Kubernetes, Helm, Docker, Istio Service Mesh
+
+CI/CD & Monitoring: GitHub Actions, GitLab CI, Jenkins, ArgoCD, Prometheus, Grafana, Datadog, ELK Stack
+
+Professional Experience
+Lead Infrastructure Engineer | ScaleUp Systems (2021 – Present)
+
+Manages a $1.8M annual cloud infrastructure budget on AWS and GCP, reducing cloud spend by 32% through Spot Instance strategies and automated resource right-sizing.
+
+Oversees multi-region EKS Kubernetes clusters serving over 1.2 billion monthly requests at 99.995% uptime availability.
+
+Pioneered GitOps deployments using ArgoCD and Terraform, reducing feature release cycles from two weeks to daily automated deployments.
+
+Senior DevOps Engineer | Core Networks (2017 – 2021)
+
+Re-architected continuous integration pipelines in GitLab CI, cutting build and execution times from 45 minutes to 8 minutes.
+
+Implemented infrastructure-wide security monitoring using Datadog and AWS GuardDuty, neutralizing automated security threats in real-time.
+
+Led disaster recovery dry-run drills and automated automated failovers across multi-region US East/West database replicas.
+
+Systems Administrator / SRE | Enterprise Cloud Solutions (2014 – 2017)
+
+Maintained 400+ Linux/Unix servers (RHEL, Ubuntu), writing custom Bash and Python automation scripts for patching and configuration management.
+
+Configured automated backup routines using AWS S3 Glacier and Ansible playbooks.
+
+IT Support Specialist | TechStaff Consulting (2013 – 2014)
+
+Managed network hardware, active directory domains, and hardware provisioning for local mid-size businesses.
+
+Certifications & Education
+AWS Certified Solutions Architect – Professional
+
+Certified Kubernetes Administrator (CKA)
+
+B.S. in Information Technology | UT Austin (2009 – 2013)

@@ -1,0 +1,30 @@
+Aung Kyaw San — Mid-Level Full-Stack Developer
+Seniority: Mid-Level (4 years experience)
+
+Target Roles: Full-Stack Software Engineer, Node.js / React Developer
+
+Education
+B.E. in Computer Engineering & Information Technology — Yangon Technological University (YTU) (Graduated 2022)
+
+Profile Summary
+Pragmatic Full-Stack Engineer with 4 years of experience delivering end-to-end web applications. Specialized in building REST APIs with Node.js/Express, state-driven frontends with React, and managing relational and NoSQL databases.
+
+Core Skills
+Languages & Tech: JavaScript, TypeScript, Node.js, Express.js, React, HTML/CSS
+
+Databases: PostgreSQL, MongoDB, Redis
+
+DevOps & Cloud: Docker, AWS (S3, EC2), CI/CD (GitHub Actions)
+
+Key Experience
+Full-Stack Software Engineer | Horizon Tech Labs (2023 – Present)
+
+Developed high-throughput REST APIs supporting 20k daily active users using Node.js and PostgreSQL.
+
+Built real-time dashboard components using React and WebSockets for monitoring live user metrics.
+
+Containerized application microservices using Docker to standardize local and staging development environments.
+
+Junior Developer | ByteWorks Software (2022 – 2023)
+
+Developed frontend modules using React and Redux Toolkit, refactoring legacy class components to functional hooks.

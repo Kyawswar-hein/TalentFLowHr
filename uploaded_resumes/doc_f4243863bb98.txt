@@ -1,0 +1,30 @@
+Htet Paing Oo — Senior Backend Engineer (Java)
+Seniority: Senior Individual Contributor (8 years experience)
+
+Target Roles: Senior Java Developer, Backend Engineering Lead
+
+Education
+B.E. in Computer Science and Engineering — Myanmar Institute of Information Technology (MIIT) (Graduated 2018)
+
+Profile Summary
+Senior Backend Engineer with 8 years of experience architecting secure, scalable microservices in Java and Spring Boot. Deep expertise in relational database optimization, asynchronous messaging systems, and multi-tenant systems.
+
+Core Skills
+Core: Java (11/17), Spring Boot, Spring Security, Hibernate/JPA, RESTful APIs
+
+Messaging & Storage: Apache Kafka, PostgreSQL, Redis, RabbitMQ
+
+Testing & Tools: JUnit 5, Mockito, Docker, Git, SonarQube
+
+Key Experience
+Senior Backend Engineer | Apex Financial Software (2022 – Present)
+
+Designed and built transactional microservices using Spring Boot and Kafka handling over $100M in quarterly transactions.
+
+Optimized complex PostgreSQL queries and indexing strategies, reducing high-load latency spikes by 45%.
+
+Mentored 4 junior/mid-level engineers through code reviews, design docs, and pair-programming sessions.
+
+Backend Software Developer | CoreTech Systems (2018 – 2022)
+
+Maintained monolithic Java EE applications and migrated core legacy modules into Spring Boot microservices.

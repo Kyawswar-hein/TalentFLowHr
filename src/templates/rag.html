@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Talent Intelligence - Agentic RAG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col text-gray-800">
+
+    <!-- TOP NAVBAR -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-30 h-16 flex items-center justify-between px-6 shadow-sm">
+        <div class="flex items-center space-x-4">
+            <button id="toggleSidebar" class="text-gray-500 hover:text-gray-700 p-1 rounded-md hover:bg-gray-100">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <div class="flex items-center space-x-2">
+                <span class="bg-blue-600 text-white p-1.5 rounded-lg text-sm font-bold">HR</span>
+                <span class="font-bold text-gray-800 text-base tracking-tight" id="txt-brand">TalentFlow AI</span>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-6">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800" id="txt-engine-status">
+                ● Vector Engine Active
+            </span>
+
+            <div class="inline-flex rounded-md shadow-sm border border-gray-200 p-0.5 bg-gray-50 text-xs font-semibold">
+                <button id="lang-en" class="px-2.5 py-1 rounded bg-blue-600 text-white shadow-sm transition">EN</button>
+                <button id="lang-jp" class="px-2.5 py-1 rounded text-gray-600 hover:text-gray-900 transition">日本語</button>
+            </div>
+
+            <div class="flex items-center space-x-2 pl-2 border-l border-gray-200">
+                <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center text-xs border border-blue-200">HR</div>
+                <span class="text-xs font-medium text-gray-700 hidden sm:inline-block">Recruiter Admin</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex flex-1 relative overflow-hidden">
+        <!-- SIDEBAR -->
+        <aside id="sidebar" class="w-64 bg-white border-r border-gray-200 flex-shrink-0 transition-all duration-300 flex flex-col justify-between">
+            <div class="p-4 space-y-6">
+                <nav class="space-y-1">
+                    <a href="dashboard" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">📊</span>
+                        <span id="nav-dashboard">Dashboard</span>
+                    </a>
+                    <a href="resumes" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">📁</span>
+                        <span id="nav-resumes">Resume Processing</span>
+                    </a>
+                    <a href="candidates" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">👥</span>
+                        <span id="nav-candidates">Candidate Database</span>
+                    </a>
+                    <a href="interview" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">🎯</span>
+                        <span id="nav-interview">Interview Prep</span>
+                    </a>
+                    <a href="rag" class="flex items-center space-x-3 px-3 py-2 rounded-lg bg-blue-50 text-blue-700 font-semibold text-xs transition">
+                        <span class="text-base">🧠</span>
+                        <span id="nav-rag">Agentic RAG Search</span>
+                    </a>
+                    <a href="settings" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">⚙️</span>
+                        <span id="nav-settings">Settings</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="p-4 border-t border-gray-100 bg-gray-50/50">
+                <p class="text-[10px] text-gray-400 font-medium" id="txt-storage-info">Storage: 42.8 MB / 5 GB</p>
+                <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1.5">
+                    <div class="bg-blue-600 h-1.5 rounded-full" style="width: 15%"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN WORKSPACE -->
+        <main class="flex-1 overflow-y-auto p-6 flex flex-col">
+            <div class="mb-4">
+                <h1 class="text-xl font-bold text-gray-900" id="txt-title">Agentic RAG Natural Search</h1>
+                <p class="text-xs text-gray-500 mt-0.5" id="txt-subtitle">Ask questions across all indexed resume embeddings using conversational similarity search.</p>
+            </div>
+
+            <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-5 flex flex-col flex-1 min-h-[500px]">
+                <div id="ragChatBox" class="flex-1 overflow-y-auto space-y-4 pr-1 text-xs">
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-3 text-gray-600" id="txt-rag-welcome">
+                        👋 <strong>Agent Ready:</strong> Ask questions about candidate skills, experience, or project backgrounds across all ingested resumes.
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-gray-100 space-y-2">
+                    <div class="flex space-x-2">
+                        <textarea id="promptInput" rows="2" placeholder="e.g., Show me senior candidates with Python and Spring Boot experience..." 
+                                  class="flex-1 border border-gray-300 rounded-lg p-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"></textarea>
+                        <button id="sendPromptBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-5 rounded-lg text-xs font-semibold shadow transition flex items-center justify-center">
+                            Send
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        const translations = {
+            en: {
+                brand: "TalentFlow AI",
+                engineStatus: "● Vector Engine Active",
+                navDashboard: "Dashboard",
+                navResumes: "Resume Processing",
+                navCandidates: "Candidate Database",
+                navInterview: "Interview Prep",
+                navRag: "Agentic RAG Search",
+                navSettings: "Settings",
+                storageInfo: "Storage: 42.8 MB / 5 GB",
+                title: "Agentic RAG Natural Search",
+                subtitle: "Ask questions across all indexed resume embeddings using conversational similarity search.",
+                ragWelcome: "👋 <strong>Agent Ready:</strong> Ask questions about candidate skills, experience, or project backgrounds across all ingested resumes.",
+                promptPlaceholder: "e.g., Show me senior candidates with Python and Spring Boot experience who have built REST APIs...",
+                btnSend: "Send",
+                vectorMatchesTitle: "Top Vector Database Matches:"
+            },
+            jp: {
+                brand: "TalentFlow AI",
+                engineStatus: "● ベクトルエンジン稼働中",
+                navDashboard: "ダッシュボード",
+                navResumes: "履歴書処理",
+                navCandidates: "候補者データベース",
+                navInterview: "面接対策",
+                navRag: "Agentic RAG検索",
+                navSettings: "設定",
+                storageInfo: "ストレージ: 42.8 MB / 5 GB",
+                title: "Agentic RAG 自然言語AI検索",
+                subtitle: "インデックス化された履歴書データ全体から自然言語でスキル・実績を検索",
+                ragWelcome: "👋 <strong>エージェント準備完了:</strong> 登録された履歴書データからスキルや実務経験について自然言語で質問できます。",
+                promptPlaceholder: "例：PythonとSpring Bootの経験があり、REST APIの設計経験があるシニア候補者を表示してください...",
+                btnSend: "送信",
+                vectorMatchesTitle: "上位のベクトル検索一致結果:"
+            }
+        };
+
+        let currentLang = localStorage.getItem('appLang') || 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('appLang', lang);
+            const t = translations[lang];
+
+            document.getElementById('lang-en').className = lang === 'en' ? "px-2.5 py-1 rounded bg-blue-600 text-white shadow-sm transition" : "px-2.5 py-1 rounded text-gray-600 hover:text-gray-900 transition";
+            document.getElementById('lang-jp').className = lang === 'jp' ? "px-2.5 py-1 rounded bg-blue-600 text-white shadow-sm transition" : "px-2.5 py-1 rounded text-gray-600 hover:text-gray-900 transition";
+
+            document.getElementById('txt-brand').innerText = t.brand;
+            document.getElementById('txt-engine-status').innerText = t.engineStatus;
+            document.getElementById('nav-dashboard').innerText = t.navDashboard;
+            document.getElementById('nav-resumes').innerText = t.navResumes;
+            document.getElementById('nav-candidates').innerText = t.navCandidates;
+            document.getElementById('nav-interview').innerText = t.navInterview;
+            document.getElementById('nav-rag').innerText = t.navRag;
+            document.getElementById('nav-settings').innerText = t.navSettings;
+            document.getElementById('txt-storage-info').innerText = t.storageInfo;
+
+            document.getElementById('txt-title').innerText = t.title;
+            document.getElementById('txt-subtitle').innerText = t.subtitle;
+            document.getElementById('txt-rag-welcome').innerHTML = t.ragWelcome;
+            document.getElementById('promptInput').placeholder = t.promptPlaceholder;
+            document.getElementById('sendPromptBtn').innerText = t.btnSend;
+        }
+
+        // -------------------------------------------------------------
+        // Chat RAG Loop with Real Backend Connection (POST /api/v1/rag/search)
+        // -------------------------------------------------------------
+        const promptInput = document.getElementById('promptInput');
+        const sendPromptBtn = document.getElementById('sendPromptBtn');
+        const ragChatBox = document.getElementById('ragChatBox');
+
+        sendPromptBtn.addEventListener('click', async () => {
+            const promptText = promptInput.value.trim();
+            if (!promptText) return;
+
+            // 1. Render User Message
+            const userBubble = document.createElement('div');
+            userBubble.className = "bg-blue-600 text-white p-3 rounded-lg text-xs ml-auto max-w-xl shadow-sm";
+            userBubble.innerText = promptText;
+            ragChatBox.appendChild(userBubble);
+
+            promptInput.value = '';
+            ragChatBox.scrollTop = ragChatBox.scrollHeight;
+
+            // 2. Render Loading Indicator
+            const thinkingBubble = document.createElement('div');
+            thinkingBubble.className = "bg-gray-100 border border-gray-200 p-3 rounded-lg text-xs text-gray-500 italic max-w-xl";
+            thinkingBubble.innerText = "Executing LangGraph workflow (Ollama llama3.1 reasoning & pgvector search)...";
+            ragChatBox.appendChild(thinkingBubble);
+            ragChatBox.scrollTop = ragChatBox.scrollHeight;
+
+            try {
+                // 3. Post to Vector Search API
+                const response = await fetch('/api/v1/rag/search', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ query: promptText, top_k: 4 })
+                });
+
+                if (!response.ok) throw new Error("Backend search service error");
+
+                const data = await response.json();
+                const answer = data.answer || "";
+                const results = data.results || [];
+                const intent = data.intent || "vector_search";
+
+                thinkingBubble.className = "bg-white border border-gray-200 p-4 rounded-lg text-xs text-gray-800 max-w-2xl space-y-3 shadow-sm";
+
+                let innerContent = '';
+
+                // A. Render Synthesized Agent Answer
+                if (answer) {
+                    innerContent += `
+                        <div class="bg-blue-50/80 p-3 rounded-lg border border-blue-200">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">TalentFlow Agent</span>
+                                <span class="text-[10px] uppercase font-semibold text-gray-500">Intent: ${intent}</span>
+                            </div>
+                            <p class="text-gray-800 leading-relaxed whitespace-pre-line text-xs font-normal">${answer}</p>
+                        </div>
+                    `;
+                }
+
+                // B. Render Matched Vector Chunks
+                if (results.length > 0) {
+                    const matchesTitle = translations[currentLang].vectorMatchesTitle;
+                    const matchesHTML = results.map((chunk, idx) => {
+                        const matchScore = chunk.distance_score ? ((1 - chunk.distance_score) * 100).toFixed(1) : '0.0';
+                        return `
+                            <div class="bg-gray-50 p-2.5 rounded-lg border border-gray-200 space-y-1">
+                                <div class="flex justify-between items-center font-bold text-gray-900">
+                                    <span>${idx + 1}. ${chunk.document_name}</span>
+                                    <span class="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-bold">${matchScore}% Match</span>
+                                </div>
+                                <p class="text-gray-600 text-[11px] leading-relaxed">"${chunk.content}"</p>
+                            </div>
+                        `;
+                    }).join('');
+
+                    innerContent += `
+                        <div class="pt-2 border-t border-gray-100">
+                            <p class="font-bold text-gray-700 text-[11px] mb-2">${matchesTitle}</p>
+                            <div class="space-y-2">${matchesHTML}</div>
+                        </div>
+                    `;
+                } else if (!answer) {
+                    innerContent = `<p class="text-gray-500 italic">No matching candidate chunks found in vector storage.</p>`;
+                }
+
+                thinkingBubble.innerHTML = innerContent;
+
+            } catch (err) {
+                console.error("RAG Error:", err);
+                thinkingBubble.className = "bg-red-50 border border-red-200 p-3 rounded-lg text-xs text-red-600";
+                thinkingBubble.innerText = "⚠️ Error performing agentic search. Ensure your FastAPI server and Ollama are active.";
+            }
+
+            ragChatBox.scrollTop = ragChatBox.scrollHeight;
+        });
+
+        // Allow Enter key submission
+        promptInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendPromptBtn.click();
+            }
+        });
+
+        // Toggle Sidebar
+        document.getElementById('toggleSidebar').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('hidden');
+        });
+
+        document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+        document.getElementById('lang-jp').addEventListener('click', () => setLanguage('jp'));
+
+        setLanguage(currentLang);
+    </script>
+</body>
+</html>

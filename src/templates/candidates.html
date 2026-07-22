@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Talent Intelligence - Candidates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col text-gray-800">
+
+    <!-- TOP NAVBAR -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-30 h-16 flex items-center justify-between px-6 shadow-sm">
+        <div class="flex items-center space-x-4">
+            <button id="toggleSidebar" class="text-gray-500 hover:text-gray-700 p-1 rounded-md hover:bg-gray-100">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <div class="flex items-center space-x-2">
+                <span class="bg-blue-600 text-white p-1.5 rounded-lg text-sm font-bold">HR</span>
+                <span class="font-bold text-gray-800 text-base tracking-tight" id="txt-brand">TalentFlow AI</span>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-6">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800" id="txt-engine-status">
+                ● Vector Engine Active
+            </span>
+
+            <div class="inline-flex rounded-md shadow-sm border border-gray-200 p-0.5 bg-gray-50 text-xs font-semibold">
+                <button id="lang-en" class="px-2.5 py-1 rounded bg-blue-600 text-white shadow-sm transition">EN</button>
+                <button id="lang-jp" class="px-2.5 py-1 rounded text-gray-600 hover:text-gray-900 transition">日本語</button>
+            </div>
+
+            <div class="flex items-center space-x-2 pl-2 border-l border-gray-200">
+                <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center text-xs border border-blue-200">HR</div>
+                <span class="text-xs font-medium text-gray-700 hidden sm:inline-block">Recruiter Admin</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex flex-1 relative overflow-hidden">
+        <!-- SIDEBAR -->
+        <aside id="sidebar" class="w-64 bg-white border-r border-gray-200 flex-shrink-0 transition-all duration-300 flex flex-col justify-between">
+            <div class="p-4 space-y-6">
+                <nav class="space-y-1">
+                    <a href="dashboard" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">📊</span>
+                        <span id="nav-dashboard">Dashboard</span>
+                    </a>
+                    <a href="resumes" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">📁</span>
+                        <span id="nav-resumes">Resume Processing</span>
+                    </a>
+                    <a href="candidates" class="flex items-center space-x-3 px-3 py-2 rounded-lg bg-blue-50 text-blue-700 font-semibold text-xs transition">
+                        <span class="text-base">👥</span>
+                        <span id="nav-candidates">Candidate Database</span>
+                    </a>
+                    <a href="interview" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">🎯</span>
+                        <span id="nav-interview">Interview Prep</span>
+                    </a>
+                    <a href="rag" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">🧠</span>
+                        <span id="nav-rag">Agentic RAG Search</span>
+                    </a>
+                    <a href="settings" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">⚙️</span>
+                        <span id="nav-settings">Settings</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="p-4 border-t border-gray-100 bg-gray-50/50">
+                <p class="text-[10px] text-gray-400 font-medium" id="txt-storage-info">Storage: 42.8 MB / 5 GB</p>
+                <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1.5">
+                    <div class="bg-blue-600 h-1.5 rounded-full" style="width: 15%"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN WORKSPACE -->
+        <main class="flex-1 overflow-y-auto p-6 space-y-6">
+            <div>
+                <h1 class="text-xl font-bold text-gray-900" id="txt-title">Ingested Candidate Directory</h1>
+                <p class="text-xs text-gray-500 mt-0.5" id="txt-subtitle">Filter, search, and inspect candidates committed to vector memory.</p>
+            </div>
+
+            <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm space-y-4">
+                <!-- Search & Cascading Filter Options Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                    <!-- Text Keyword Search -->
+                    <input type="text" id="searchInput" placeholder="Search name or email..." 
+                           class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    
+                    <!-- Department Dropdown -->
+                    <select id="deptFilter" class="border border-gray-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium">
+                        <option value="" id="opt-all-depts">All Departments</option>
+                        <option value="Software Engineering" id="opt-dept-eng">Software Engineering</option>
+                        <option value="Data & AI" id="opt-dept-data">Data & AI Research</option>
+                        <option value="Cloud & Infrastructure" id="opt-dept-cloud">Cloud & Infrastructure</option>
+                        <option value="Product & Design" id="opt-dept-prod">Product & UX Design</option>
+                        <option value="HR & Talent" id="opt-dept-hr">HR & Talent Acquisition</option>
+                        <option value="Sales & Marketing" id="opt-dept-sales">Sales & Business Dev</option>
+                        <option value="Finance & Legal" id="opt-dept-fin">Finance & Legal</option>
+                    </select>
+
+                    <!-- Dynamically Cascaded Target Role Dropdown -->
+                    <select id="roleFilter" class="border border-gray-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="" id="opt-all-roles">All Roles</option>
+                    </select>
+
+                    <!-- Experience Level Dropdown -->
+                    <select id="expFilter" class="border border-gray-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="" id="opt-all-exp">All Experience Levels</option>
+                        <option value="Intern" id="opt-exp-intern">Intern / Fresh Graduate</option>
+                        <option value="Junior" id="opt-exp-jr">Junior (1-2 yrs)</option>
+                        <option value="Mid-Level" id="opt-exp-mid">Mid-Level (3-5 yrs)</option>
+                        <option value="Senior" id="opt-exp-sr">Senior (5-8 yrs)</option>
+                        <option value="Lead" id="opt-exp-lead">Lead / Principal (8+ yrs)</option>
+                    </select>
+                </div>
+
+                <!-- Candidates Table -->
+                <div class="overflow-x-auto border border-gray-200 rounded-lg">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="bg-gray-50 border-b border-gray-200 text-gray-500 font-semibold uppercase tracking-wider">
+                                <th class="p-3" id="th-name">Candidate / Email</th>
+                                <th class="p-3" id="th-dept">Department</th>
+                                <th class="p-3" id="th-role">Target Role</th>
+                                <th class="p-3" id="th-exp">Experience Level</th>
+                                <th class="p-3" id="th-status">Vector Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200" id="candidateList">
+                            <tr>
+                                <td colspan="5" class="p-6 text-center text-gray-400 italic">
+                                    Loading structured candidate records...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        // Department to Roles Mapping Schema
+        const departmentRoles = {
+            "Software Engineering": [
+                "Full-Stack Engineer",
+                "Backend Engineer (Java / Spring)",
+                "Backend Engineer (Python / FastAPI)",
+                "Frontend Engineer (React / Next.js)",
+                "Mobile Developer (Flutter / iOS / Android)",
+                "QA / Automation Test Engineer"
+            ],
+            "Data & AI": [
+                "AI / Machine Learning Engineer",
+                "Data Scientist",
+                "Data Engineer",
+                "Computer Vision Specialist",
+                "NLP / LLM Research Engineer"
+            ],
+            "Cloud & Infrastructure": [
+                "DevOps Engineer",
+                "Site Reliability Engineer (SRE)",
+                "Cloud Architect (AWS / GCP / Azure)",
+                "Cybersecurity / SOC Analyst",
+                "Database Administrator (DBA)"
+            ],
+            "Product & Design": [
+                "Technical Product Manager",
+                "UI/UX Designer",
+                "Product Designer",
+                "Scrum Master / Agile Coach"
+            ],
+            "HR & Talent": [
+                "Technical Recruiter",
+                "HR Business Partner (HRBP)",
+                "Talent Acquisition Specialist",
+                "HR Operations Lead"
+            ],
+            "Sales & Marketing": [
+                "Enterprise Account Executive",
+                "Solutions Architect / Pre-Sales",
+                "Digital Marketing Specialist",
+                "Growth / Business Development Manager"
+            ],
+            "Finance & Legal": [
+                "Financial Analyst",
+                "Corporate Accountant",
+                "Legal Counsel / Compliance Officer"
+            ]
+        };
+
+        const translations = {
+            en: {
+                brand: "TalentFlow AI",
+                engineStatus: "● Vector Engine Active",
+                navDashboard: "Dashboard",
+                navResumes: "Resume Processing",
+                navCandidates: "Candidate Database",
+                navRag: "Agentic RAG Search",
+                navSettings: "Settings",
+                storageInfo: "Storage: 42.8 MB / 5 GB",
+                title: "Ingested Candidate Directory",
+                subtitle: "Filter, search, and inspect candidates committed to vector memory.",
+                searchPlaceholder: "Search name or email...",
+                allDepts: "All Departments",
+                deptEng: "Software Engineering",
+                deptData: "Data & AI Research",
+                deptCloud: "Cloud & Infrastructure",
+                deptProd: "Product & UX Design",
+                deptHr: "HR & Talent Acquisition",
+                deptSales: "Sales & Business Dev",
+                deptFin: "Finance & Legal",
+                allRoles: "All Roles",
+                allExp: "All Experience Levels",
+                thName: "Candidate / Email",
+                thDept: "Department",
+                thRole: "Target Role",
+                thExp: "Experience Level",
+                thStatus: "Vector Status"
+            },
+            jp: {
+                brand: "TalentFlow AI",
+                engineStatus: "● ベクトルエンジン稼働中",
+                navDashboard: "ダッシュボード",
+                navResumes: "履歴書処理",
+                navCandidates: "候補者データベース",
+                navRag: "Agentic RAG検索",
+                navSettings: "設定",
+                storageInfo: "ストレージ: 42.8 MB / 5 GB",
+                title: "登録済み候補者ディレクトリ",
+                subtitle: "ベクトルメモリに記憶された候補者の検索・絞り込み・詳細確認",
+                searchPlaceholder: "名前またはメールで検索...",
+                allDepts: "すべての部門",
+                deptEng: "ソフトウェア開発部門",
+                deptData: "データ・AI研究部門",
+                deptCloud: "クラウド・インフラ部門",
+                deptProd: "プロダクト・UI/UX部門",
+                deptHr: "人事・採用部門",
+                deptSales: "営業・事業開発部門",
+                deptFin: "財務・法務部門",
+                allRoles: "すべての職種",
+                allExp: "すべての経験年数",
+                thName: "候補者名 / メール",
+                thDept: "部門",
+                thRole: "希望職種",
+                thExp: "経験レベル",
+                thStatus: "ベクトルステータス"
+            }
+        };
+
+        let currentLang = localStorage.getItem('appLang') || 'en';
+
+        // Update Role Dropdown options dynamically based on chosen Department
+        function updateRoleOptions(selectedDept) {
+            const roleSelect = document.getElementById('roleFilter');
+            roleSelect.innerHTML = `<option value="" id="opt-all-roles">${translations[currentLang].allRoles}</option>`;
+
+            if (selectedDept && departmentRoles[selectedDept]) {
+                departmentRoles[selectedDept].forEach(role => {
+                    const opt = document.createElement('option');
+                    opt.value = role;
+                    opt.textContent = role;
+                    roleSelect.appendChild(opt);
+                });
+            } else {
+                // If "All Departments" selected, include every role across all departments
+                Object.values(departmentRoles).flat().forEach(role => {
+                    const opt = document.createElement('option');
+                    opt.value = role;
+                    opt.textContent = role;
+                    roleSelect.appendChild(opt);
+                });
+            }
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('appLang', lang);
+            const t = translations[lang];
+
+            document.getElementById('lang-en').className = lang === 'en' ? "px-2.5 py-1 rounded bg-blue-600 text-white shadow-sm transition" : "px-2.5 py-1 rounded text-gray-600 hover:text-gray-900 transition";
+            document.getElementById('lang-jp').className = lang === 'jp' ? "px-2.5 py-1 rounded bg-blue-600 text-white shadow-sm transition" : "px-2.5 py-1 rounded text-gray-600 hover:text-gray-900 transition";
+
+            document.getElementById('txt-brand').innerText = t.brand;
+            document.getElementById('txt-engine-status').innerText = t.engineStatus;
+            document.getElementById('nav-dashboard').innerText = t.navDashboard;
+            document.getElementById('nav-resumes').innerText = t.navResumes;
+            document.getElementById('nav-candidates').innerText = t.navCandidates;
+            document.getElementById('nav-rag').innerText = t.navRag;
+            document.getElementById('nav-settings').innerText = t.navSettings;
+            document.getElementById('txt-storage-info').innerText = t.storageInfo;
+
+            document.getElementById('txt-title').innerText = t.title;
+            document.getElementById('txt-subtitle').innerText = t.subtitle;
+            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
+            
+            document.getElementById('opt-all-depts').innerText = t.allDepts;
+            document.getElementById('opt-dept-eng').innerText = t.deptEng;
+            document.getElementById('opt-dept-data').innerText = t.deptData;
+            document.getElementById('opt-dept-cloud').innerText = t.deptCloud;
+            document.getElementById('opt-dept-prod').innerText = t.deptProd;
+            document.getElementById('opt-dept-hr').innerText = t.deptHr;
+            document.getElementById('opt-dept-sales').innerText = t.deptSales;
+            document.getElementById('opt-dept-fin').innerText = t.deptFin;
+
+            document.getElementById('opt-all-exp').innerText = t.allExp;
+
+            document.getElementById('th-name').innerText = t.thName;
+            document.getElementById('th-dept').innerText = t.thDept;
+            document.getElementById('th-role').innerText = t.thRole;
+            document.getElementById('th-exp').innerText = t.thExp;
+            document.getElementById('th-status').innerText = t.thStatus;
+
+            updateRoleOptions(document.getElementById('deptFilter').value);
+        }
+
+        // Helper to infer department if missing in DB record
+        function inferDepartment(role) {
+            if (!role) return "Software Engineering";
+            const r = role.toLowerCase();
+            if (r.includes("data") || r.includes("ai") || r.includes("ml") || r.includes("vision") || r.includes("nlp")) return "Data & AI";
+            if (r.includes("devops") || r.includes("cloud") || r.includes("sre") || r.includes("cyber") || r.includes("dba")) return "Cloud & Infrastructure";
+            if (r.includes("product") || r.includes("ux") || r.includes("ui") || r.includes("design") || r.includes("scrum")) return "Product & Design";
+            if (r.includes("hr") || r.includes("recruiter") || r.includes("talent")) return "HR & Talent";
+            if (r.includes("sales") || r.includes("marketing") || r.includes("account") || r.includes("growth")) return "Sales & Marketing";
+            if (r.includes("finance") || r.includes("legal") || r.includes("accountant")) return "Finance & Legal";
+            return "Software Engineering";
+        }
+
+        // -------------------------------------------------------------
+        // Fetch Candidates from API (GET /api/v1/candidates)
+        // -------------------------------------------------------------
+        async function fetchCandidatesFromDB() {
+            const tableBody = document.getElementById('candidateList');
+            if (!tableBody) return;
+
+            try {
+                const response = await fetch('/api/v1/candidates');
+                if (!response.ok) throw new Error("API call failed");
+
+                const candidates = await response.json();
+
+                if (candidates.length === 0) {
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="5" class="p-6 text-center text-gray-500 italic">
+                                No candidates found. Ingest resumes via Resume Processing first!
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+
+                tableBody.innerHTML = candidates.map(c => {
+                    const dept = c.department || inferDepartment(c.target_role);
+                    return `
+                        <tr class="candidate-card hover:bg-gray-50 transition" 
+                            data-name="${(c.full_name || '').toLowerCase()}" 
+                            data-email="${(c.email || '').toLowerCase()}" 
+                            data-dept="${dept}"
+                            data-role="${c.target_role || ''}" 
+                            data-exp="${c.experience_level || ''}">
+                            <td class="p-3 font-semibold text-gray-800">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-blue-600">👤</span>
+                                    <span>${c.full_name || 'Unknown Candidate'}</span>
+                                </div>
+                                <span class="text-[10px] text-gray-400 font-normal block pl-6">${c.email || 'No email registered'}</span>
+                            </td>
+                            <td class="p-3">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-blue-50 text-blue-700 border border-blue-100">
+                                    ${dept}
+                                </span>
+                            </td>
+                            <td class="p-3 text-gray-700 font-medium">${c.target_role || 'Full-Stack Engineer'}</td>
+                            <td class="p-3 text-gray-600">${c.experience_level || 'Junior'}</td>
+                            <td class="p-3">
+                                <span class="text-[10px] bg-green-50 text-green-700 font-semibold px-2 py-0.5 rounded border border-green-200">
+                                    Indexed
+                                </span>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+
+                filterCandidates();
+
+            } catch (err) {
+                console.error("Fetch Error:", err);
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="p-4 text-center text-red-500 font-medium">
+                            ⚠️ Unable to reach FastAPI candidate backend service.
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        // Filter Logic Engine
+        function filterCandidates() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const dept = document.getElementById('deptFilter').value;
+            const role = document.getElementById('roleFilter').value;
+            const exp = document.getElementById('expFilter').value;
+
+            document.querySelectorAll('.candidate-card').forEach(card => {
+                const cName = card.getAttribute('data-name');
+                const cEmail = card.getAttribute('data-email');
+                const cDept = card.getAttribute('data-dept');
+                const cRole = card.getAttribute('data-role');
+                const cExp = card.getAttribute('data-exp');
+
+                const matchesQuery = !query || cName.includes(query) || cEmail.includes(query);
+                const matchesDept = !dept || cDept === dept;
+                const matchesRole = !role || cRole.toLowerCase().includes(role.toLowerCase());
+                const matchesExp = !exp || cExp.toLowerCase().includes(exp.toLowerCase());
+
+                card.style.display = (matchesQuery && matchesDept && matchesRole && matchesExp) ? 'table-row' : 'none';
+            });
+        }
+
+        // Department Selection Change Event Handler
+        document.getElementById('deptFilter').addEventListener('change', (e) => {
+            updateRoleOptions(e.target.value);
+            filterCandidates();
+        });
+
+        document.getElementById('searchInput').addEventListener('input', filterCandidates);
+        document.getElementById('roleFilter').addEventListener('change', filterCandidates);
+        document.getElementById('expFilter').addEventListener('change', filterCandidates);
+
+        document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+        document.getElementById('lang-jp').addEventListener('click', () => setLanguage('jp'));
+        document.getElementById('toggleSidebar').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('hidden');
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage(currentLang);
+            fetchCandidatesFromDB();
+        });
+    </script>
+</body>
+</html>

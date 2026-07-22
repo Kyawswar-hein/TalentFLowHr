@@ -1,0 +1,50 @@
+Michael Tanaka — Lead Cybersecurity & Threat Intelligence Manager
+Location: Washington, D.C. | Email: m.tanaka.sec@example.com
+
+Professional Summary
+Cybersecurity Leader with 12+ years of experience directing Security Operations Centers (SOC), incident response teams, threat hunting initiatives, and corporate compliance frameworks. Proven track record of securing enterprise networks, managing zero-day vulnerabilities, and protecting critical infrastructure.
+
+Technical Skills
+Security Tools: Splunk Enterprise Security, IBM QRadar, Palo Alto Networks, Wireshark, Nessus, CrowdStrike Falcon
+
+Domains: Threat Intelligence, Incident Response (IR), Digital Forensics (DFIR), Penetration Testing, IAM
+
+Frameworks: NIST CSF, ISO/IEC 27001, SOC 2 Type II, PCI-DSS, HIPAA, MITRE ATT&CK Framework
+
+Scripting: Python, PowerShell, Bash
+
+Professional Experience
+Lead Cybersecurity Manager | Aegis Defense Systems (2021 – Present)
+
+Directs a 24/7 Security Operations Center (SOC) team of 14 analysts, protecting government and enterprise client infrastructures.
+
+Oversees incident response plans, successfully containing and neutralizing complex APT (Advanced Persistent Threat) attacks with zero data exfiltration.
+
+Standardized security posture across the enterprise using the MITRE ATT&CK framework, reducing threat detection times (MTTD) by 65%.
+
+Senior Security Analyst & Threat Hunter | SecureOps Inc. (2017 – 2021)
+
+Conducted proactive threat-hunting exercises using Splunk and CrowdStrike, identifying and isolating previously unknown system vulnerabilities.
+
+Executed annual internal penetration tests and managed external third-party vulnerability remediation.
+
+Authored company-wide Incident Response Playbooks for Ransomware, Phishing, and Insider Threat scenarios.
+
+Information Security Officer | Capitol Health Tech (2014 – 2017)
+
+Ensured enterprise systems maintained full HIPAA and PCI-DSS compliance, leading auditing efforts with external parties.
+
+Conducted weekly Nessus vulnerability scans across 2,000+ endpoints and coordinated patch management schedules with IT teams.
+
+SOC Tier 1 / Tier 2 Analyst | Federal Data Security (2012 – 2014)
+
+Monitored network traffic logs, triaged SIEM security alerts, and analyzed malware samples in sandbox environments.
+
+Certifications & Education
+CISSP (Certified Information Systems Security Professional)
+
+CISM (Certified Information Security Manager)
+
+GIAC Certified Incident Handler (GCIH)
+
+B.S. in Cybersecurity & Networking | George Mason University (2008 – 2012)

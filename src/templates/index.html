@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Talent Intelligence - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col text-gray-800">
+
+    <!-- TOP NAVBAR -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-30 h-16 flex items-center justify-between px-6 shadow-sm">
+        <div class="flex items-center space-x-4">
+            <button id="toggleSidebar" class="text-gray-500 hover:text-gray-700 p-1 rounded-md hover:bg-gray-100">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <div class="flex items-center space-x-2">
+                <span class="bg-blue-600 text-white p-1.5 rounded-lg text-sm font-bold">HR</span>
+                <span class="font-bold text-gray-800 text-base tracking-tight" id="txt-brand">TalentFlow AI</span>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-6">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800" id="txt-engine-status">
+                ● Smart Search Ready
+            </span>
+
+            <div class="inline-flex rounded-md shadow-sm border border-gray-200 p-0.5 bg-gray-50 text-xs font-semibold">
+                <button id="lang-en" class="px-2.5 py-1 rounded bg-blue-600 text-white shadow-sm transition">EN</button>
+                <button id="lang-jp" class="px-2.5 py-1 rounded text-gray-600 hover:text-gray-900 transition">日本語</button>
+            </div>
+
+            <div class="flex items-center space-x-2 pl-2 border-l border-gray-200">
+                <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center text-xs border border-blue-200">HR</div>
+                <span class="text-xs font-medium text-gray-700 hidden sm:inline-block">Recruiter Admin</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex flex-1 relative overflow-hidden">
+        <!-- SIDEBAR -->
+        <aside id="sidebar" class="w-64 bg-white border-r border-gray-200 flex-shrink-0 transition-all duration-300 flex flex-col justify-between">
+            <div class="p-4 space-y-6">
+                <nav class="space-y-1">
+                    <a href="index.html" class="flex items-center space-x-3 px-3 py-2 rounded-lg bg-blue-50 text-blue-700 font-semibold text-xs transition">
+                        <span class="text-base">📊</span>
+                        <span id="nav-dashboard">Dashboard</span>
+                    </a>
+                    <a href="resumes.html" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">📁</span>
+                        <span id="nav-resumes">Resume Upload & Review</span>
+                    </a>
+                    <a href="candidates.html" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">👥</span>
+                        <span id="nav-candidates">Candidate Directory</span>
+                    </a>
+                    <a href="rag.html" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">🧠</span>
+                        <span id="nav-rag">AI Search Assistant</span>
+                    </a>
+                    <a href="interview.html" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">🎯</span>
+                        <span id="nav-interview">Interview Prep</span>
+                    </a>
+                    <a href="settings.html" class="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 font-medium text-xs transition">
+                        <span class="text-base">⚙️</span>
+                        <span id="nav-settings">Settings</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="p-4 border-t border-gray-100 bg-gray-50/50">
+                <p class="text-[10px] text-gray-400 font-medium" id="txt-storage-info">Storage Used: 42.8 MB / 5 GB</p>
+                <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1.5">
+                    <div class="bg-blue-600 h-1.5 rounded-full" style="width: 15%"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN WORKSPACE -->
+        <main class="flex-1 overflow-y-auto p-6 space-y-6">
+            <div>
+                <h1 class="text-xl font-bold text-gray-900" id="txt-title">Recruitment Overview</h1>
+                <p class="text-xs text-gray-500 mt-0.5" id="txt-subtitle">Track candidate uploads, auto-clean duplicate applications, and search talent.</p>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                    <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider" id="kpi-1-label">Total Applicants</p>
+                    <p class="text-2xl font-bold text-gray-800 mt-1">1,248</p>
+                    <p class="text-[10px] text-green-600 mt-1 font-medium">↑ +12 this week</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                    <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider" id="kpi-2-label">Duplicates Skipped</p>
+                    <p class="text-2xl font-bold text-gray-800 mt-1">312</p>
+                    <p class="text-[10px] text-amber-600 mt-1 font-medium">Saved 25% storage space</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                    <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider" id="kpi-3-label">Searchable Profiles</p>
+                    <p class="text-2xl font-bold text-gray-800 mt-1">1,248</p>
+                    <p class="text-[10px] text-blue-600 mt-1 font-medium">All resumes indexed & ready</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                    <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider" id="kpi-4-label">Files Awaiting Review</p>
+                    <p class="text-2xl font-bold text-blue-600 mt-1" id="kpi-pending-val">0</p>
+                    <a href="resumes.html" class="text-[10px] text-blue-600 hover:underline mt-1 block font-medium" id="kpi-4-link">Upload Files →</a>
+                </div>
+            </div>
+
+            <!-- Dashboard Callouts -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm space-y-3">
+                    <h2 class="text-xs font-bold uppercase text-gray-500 tracking-wider" id="sec-quick-action">Add New Resumes</h2>
+                    <p class="text-xs text-gray-600" id="txt-quick-desc">Drag and drop new candidate resumes to automatically check for duplicate applications before saving them to your database.</p>
+                    <a href="resumes.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-xs font-semibold shadow transition" id="btn-quick-upload">Open Resume Upload Area</a>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm space-y-3">
+                    <h2 class="text-xs font-bold uppercase text-gray-500 tracking-wider" id="sec-quick-rag">Smart Candidate Search</h2>
+                    <p class="text-xs text-gray-600" id="txt-rag-desc">Ask simple, natural questions to instantly find candidates matching specific skills, job experience, or qualifications.</p>
+                    <a href="rag.html" class="inline-block bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg text-xs font-semibold shadow transition" id="btn-quick-rag">Ask AI Search Assistant</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- SHARED SCRIPT WITH PLAIN LANGUAGE DICTIONARY -->
+    <script>
+        const translations = {
+            en: {
+                brand: "TalentFlow AI",
+                engineStatus: "● Smart Search Ready",
+                navDashboard: "Dashboard",
+                navResumes: "Resume Upload & Review",
+                navCandidates: "Candidate Directory",
+                navRag: "AI Search Assistant",
+                navInterview: "Interview Prep",
+                navSettings: "Settings",
+                storageInfo: "Storage Used: 42.8 MB / 5 GB",
+                title: "Recruitment Overview",
+                subtitle: "Track candidate uploads, auto-clean duplicate applications, and search talent.",
+                kpi1: "Total Applicants",
+                kpi2: "Duplicates Skipped",
+                kpi3: "Searchable Profiles",
+                kpi4: "Files Awaiting Review",
+                kpi4Link: "Upload Files →",
+                secQuickAction: "Add New Resumes",
+                txtQuickDesc: "Drag and drop new candidate resumes to automatically check for duplicate applications before saving them to your database.",
+                btnQuickUpload: "Open Resume Upload Area",
+                secQuickRag: "Smart Candidate Search",
+                txtRagDesc: "Ask simple, natural questions to instantly find candidates matching specific skills, job experience, or qualifications.",
+                btnQuickRag: "Ask AI Search Assistant"
+            },
+            jp: {
+                brand: "TalentFlow AI",
+                engineStatus: "● スマート検索準備完了",
+                navDashboard: "ダッシュボード",
+                navResumes: "履歴書アップロード・確認",
+                navCandidates: "候補者一覧",
+                navRag: "AI検索アシスタント",
+                navInterview: "面接準備キット",
+                navSettings: "設定",
+                storageInfo: "使用容量: 42.8 MB / 5 GB",
+                title: "採用アクティビティ概要",
+                subtitle: "応募者の管理、重複応募の自動除外、AI人材検索",
+                kpi1: "総応募者数",
+                kpi2: "重複チェック（スキップ済）",
+                kpi3: "検索可能なプロフィール数",
+                kpi4: "確認待ちファイル",
+                kpi4Link: "ファイルをアップロード →",
+                secQuickAction: "新しい履歴書を追加",
+                txtQuickDesc: "新しい履歴書をドラッグ＆ドロップして、データベースに登録する前に重複応募を自動チェックします。",
+                btnQuickUpload: "履歴書アップロード画面を開く",
+                secQuickRag: "スマート人材検索",
+                txtRagDesc: "自然な言葉で質問するだけで、特定のスキルや経験を持つ候補者を瞬時に検索できます。",
+                btnQuickRag: "AI検索アシスタントを開く"
+            }
+        };
+
+        let currentLang = localStorage.getItem('appLang') || 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('appLang', lang);
+            const t = translations[lang];
+
+            const langEnBtn = document.getElementById('lang-en');
+            const langJpBtn = document.getElementById('lang-jp');
+
+            if (lang === 'en') {
+                langEnBtn.className = "px-2.5 py-1 rounded bg-blue-600 text-white shadow-sm transition";
+                langJpBtn.className = "px-2.5 py-1 rounded text-gray-600 hover:text-gray-900 transition";
+            } else {
+                langJpBtn.className = "px-2.5 py-1 rounded bg-blue-600 text-white shadow-sm transition";
+                langEnBtn.className = "px-2.5 py-1 rounded text-gray-600 hover:text-gray-900 transition";
+            }
+
+            document.getElementById('txt-brand').innerText = t.brand;
+            document.getElementById('txt-engine-status').innerText = t.engineStatus;
+            document.getElementById('nav-dashboard').innerText = t.navDashboard;
+            document.getElementById('nav-resumes').innerText = t.navResumes;
+            document.getElementById('nav-candidates').innerText = t.navCandidates;
+            document.getElementById('nav-rag').innerText = t.navRag;
+            document.getElementById('nav-interview').innerText = t.navInterview;
+            document.getElementById('nav-settings').innerText = t.navSettings;
+            document.getElementById('txt-storage-info').innerText = t.storageInfo;
+
+            document.getElementById('txt-title').innerText = t.title;
+            document.getElementById('txt-subtitle').innerText = t.subtitle;
+            document.getElementById('kpi-1-label').innerText = t.kpi1;
+            document.getElementById('kpi-2-label').innerText = t.kpi2;
+            document.getElementById('kpi-3-label').innerText = t.kpi3;
+            document.getElementById('kpi-4-label').innerText = t.kpi4;
+            document.getElementById('kpi-4-link').innerText = t.kpi4Link;
+
+            document.getElementById('sec-quick-action').innerText = t.secQuickAction;
+            document.getElementById('txt-quick-desc').innerText = t.txtQuickDesc;
+            document.getElementById('btn-quick-upload').innerText = t.btnQuickUpload;
+            document.getElementById('sec-quick-rag').innerText = t.secQuickRag;
+            document.getElementById('txt-rag-desc').innerText = t.txtRagDesc;
+            document.getElementById('btn-quick-rag').innerText = t.btnQuickRag;
+        }
+
+        document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+        document.getElementById('lang-jp').addEventListener('click', () => setLanguage('jp'));
+        document.getElementById('toggleSidebar').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('hidden');
+        });
+
+        setLanguage(currentLang);
+    </script>
+</body>
+</html>
